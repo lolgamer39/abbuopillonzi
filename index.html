@@ -36,7 +36,7 @@ a { color: var(--accent); text-decoration: none; }
 header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px; /* spazio ridotto tra logo e scritta */
   padding-bottom: 25px;
   border-bottom: 1px solid rgba(255,255,255,0.2);
   flex-wrap: wrap;
@@ -51,7 +51,7 @@ header {
 }
 
 .title-img {
-  height: 100px;
+  height: 140px; /* aumentata per dominanza visiva */
   width: auto;
   object-fit: contain;
 }
@@ -64,7 +64,7 @@ header {
 
 .lead {
   color: var(--muted);
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 16px;
   max-width: 600px;
 }
@@ -187,7 +187,7 @@ iframe.spotify {
   display: flex; 
   align-items: center; 
   justify-content: center; 
-  gap: 8px; 
+  gap: 6px; 
   transition: 0.25s ease; 
   text-align:center; 
 }
@@ -196,13 +196,6 @@ iframe.spotify {
   background: rgba(255,255,255,0.2); 
   color: var(--accent); 
   transform: scale(1.03); 
-}
-
-.linktile svg { 
-  width: 20px; 
-  height: 20px; 
-  fill: currentColor; 
-  transition: 0.25s ease; 
 }
 
 footer { 
@@ -217,8 +210,8 @@ footer {
   .side { order: 2; flex: 1 1 100%; } 
 }
 @media(max-width: 480px){ 
-  header { flex-direction: column; align-items: center; text-align: center; }
-  .title-img { height: 80px; }
+  header { flex-direction: column; align-items: center; text-align: center; gap:10px; }
+  .title-img { height: 100px; }
   .logo img { width: 80px; height: 80px; }
 }
 </style>
@@ -258,9 +251,15 @@ footer {
       <div>
         <div style="font-weight:700; margin-bottom:10px;">Link rapidi</div>
         <div class="links">
-          <a class="linktile" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank">🎵 Spotify</a>
-          <a class="linktile" href="https://www.instagram.com/abp___official/" target="_blank">📸 Instagram</a>
-          <a class="linktile" href="https://www.youtube.com/@abp___official" target="_blank">▶️ YouTube</a>
+          <a class="linktile" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank">
+            🎵 Spotify
+          </a>
+          <a class="linktile" href="https://www.instagram.com/abp___official/" target="_blank">
+            📸 Instagram
+          </a>
+          <a class="linktile" href="https://www.youtube.com/@abp___official" target="_blank">
+            ▶️ YouTube
+          </a>
           <a class="linktile" href="/shop.html" target="_blank">🛍️ Merch / Store</a>
         </div>
       </div>
@@ -275,7 +274,7 @@ footer {
 </div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
