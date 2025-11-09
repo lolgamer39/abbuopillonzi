@@ -34,44 +34,95 @@
   main { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
 
   /* Colonna Album */
-  .hero { flex: 1 1 500px; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 16px rgba(0,0,0,0.4); display: flex; flex-direction: column; }
-  .intro { padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero {
+    flex: 1 1 500px;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+  }
+  .intro {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   .intro h2 { margin-bottom: 10px; }
-  .intro img.cover-bottom { width: 100%; max-width: 380px; border-radius: 12px; margin: 20px 0; box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
-  .actions { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+  .intro p { color: var(--muted); margin-bottom: 10px; }
+  .intro img.cover-bottom {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    margin: 20px 0 10px;
+  }
+  .actions { display: flex; gap: 10px; margin-top: 15px; }
   .btn { background: var(--accent); color: #071226; padding: 10px 16px; border-radius: 8px; font-weight: 700; transition: 0.2s; }
   .btn:hover { opacity: 0.85; }
   .mutebtn { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: var(--muted); padding: 10px 14px; border-radius: 8px; transition: 0.2s; }
   .mutebtn:hover { background: rgba(255,255,255,0.1); }
-  iframe.spotify { width: 100%; height: 500px; border-radius: 12px; border: none; margin-top: 20px; }
+
+  iframe.spotify {
+    width: 100%;
+    height: 450px; /* aumentata l’altezza */
+    border-radius: 8px;
+    border: none;
+    margin-top: 20px;
+  }
 
   /* Colonna Gruppo + Link */
   .side { flex: 0 0 350px; display: flex; flex-direction: column; gap: 20px; }
-  .card { background: var(--card); border-radius: 12px; padding: 25px; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 20px; align-items: center; }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
   .artistrow { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-  .avatar { width: 250px; height: 250px; border-radius: 50%; background-size: cover; background-position: center; }
+  .avatar {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+  }
   .artistinfo { display: flex; flex-direction: column; align-items: center; text-align: center; }
   .artistinfo div:first-child { font-weight: 700; font-size: 20px; }
   .artistinfo div:last-child { font-size: 14px; color: var(--muted); }
 
   .links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
-  .linktile { background: var(--glass); padding: 14px; border-radius: 8px; font-size: 16px; color: var(--muted); display: flex; justify-content: center; transition: 0.2s; text-align:center; }
+  .linktile {
+    background: var(--glass);
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--muted);
+    display: flex;
+    justify-content: center;
+    transition: 0.2s;
+    text-align:center;
+  }
   .linktile:hover { background: rgba(255,255,255,0.2); color: var(--accent); }
 
   footer { margin-top: 30px; text-align: center; font-size: 13px; color: var(--muted); }
 
-  /* Responsività */
-  @media(max-width: 980px){ 
-    main { flex-direction: column; } 
-    .side { order: 2; flex: 1 1 100%; } 
-    iframe.spotify { height: 400px; }
+  @media(max-width: 980px){
+    main { flex-direction: column; }
+    .side { order: 2; flex: 1 1 100%; }
   }
-  @media(max-width: 480px){ 
-    .avatar { width: 180px; height: 180px; } 
+  @media(max-width: 480px){
+    .avatar { width: 180px; height: 180px; }
     .links { grid-template-columns: 1fr; }
     .linktile { font-size: 14px; padding: 12px; }
     .intro img.cover-bottom { max-width: 250px; }
-    iframe.spotify { height: 360px; }
+    iframe.spotify { height: 400px; }
   }
 </style>
 </head>
@@ -87,20 +138,18 @@
 </header>
 
 <main>
-  <!-- Colonna Album -->
   <section class="hero">
     <div class="intro">
       <h2>Ultimo album: <strong>VIPS</strong></h2>
-      <img src="assets/images/cover.jpg" alt="VIVO IN PESSIMO STATO" class="cover-bottom">
       <div class="actions">
         <a class="btn" href="https://open.spotify.com/intl-it/album/6slRf45zXBVwspBf3XR3EP" target="_blank">Ascolta su Spotify</a>
         <a class="mutebtn" href="mailto:booking@abbuopillonzi.com">Contatti booking</a>
       </div>
+      <img src="assets/images/cover.jpg" alt="VIVO IN PESSIMO STATO" class="cover-bottom">
       <iframe class="spotify" src="https://open.spotify.com/embed/artist/6oHfv1AlEtpDEMDddpVYgw" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
   </section>
 
-  <!-- Colonna Gruppo + Link -->
   <aside class="side">
     <div class="card">
       <div class="artistrow">
@@ -134,4 +183,3 @@
 </script>
 </body>
 </html>
-
