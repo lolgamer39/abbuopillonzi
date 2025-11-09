@@ -34,7 +34,14 @@
 
     .side{position:relative}
     .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .avatar{width:86px;height:86px;border-radius:50%;background:#111;background-size:cover;margin-right:12px}
+    .avatar{
+      width:150px; /* aumentata dimensione */
+      height:150px;
+      border-radius:50%;
+      background:#111;
+      background-size:cover;
+      margin-right:12px;
+    }
     .artistrow{display:flex;align-items:center}
     .links{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
     .linktile{background:var(--glass);padding:10px;border-radius:8px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px}
@@ -50,7 +57,9 @@
 <body>
   <div class="container">
     <header>
-      <div class="logo"><img src="assets/images/LOGO.jpg" alt="Logo ABP" style="width:100%;height:100%;border-radius:8px;object-fit:cover"></div>
+      <div class="logo">
+        <img src="assets/images/LOGO.jpg" alt="Logo ABP" style="width:100%;height:100%;border-radius:8px;object-fit:cover">
+      </div>
       <div>
         <h1>Abbuopillonzi (ABP)</h1>
         <p class="lead">Siamo un gruppo di 5 ragazzi di Firenze. Musica cantautorale, storie e suoni che raccontano emozioni. Progetto nato nel 2021.</p>
@@ -84,7 +93,6 @@
         <div style="margin-top:16px" id="spotify">
           <iframe class="spotify" src="https://open.spotify.com/embed/artist/6oHfv1AlEtpDEMDddpVYgw" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
         </div>
-
       </section>
 
       <aside class="side">
