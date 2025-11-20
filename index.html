@@ -15,12 +15,12 @@
         }
 
         :root {
-            --primary-color: #f5f5dc; /* Beige chiaro */
-            --secondary-color: #e8e4d9;
-            --accent-color: #d4a574;
-            --text-color: #5a4a3a;
-            --light-bg: #ffffff;
-            --border-color: #d6d0c0;
+            --primary-color: #0a0a0a;
+            --secondary-color: #1a1a1a;
+            --accent-color: #e63946;
+            --text-color: #ffffff;
+            --light-bg: #2a2a2a;
+            --border-color: #444444;
         }
 
         body {
@@ -56,7 +56,7 @@
             margin-bottom: 50px;
             font-size: 2.5rem;
             position: relative;
-            color: #5a4a3a;
+            color: var(--text-color);
         }
 
         .section-title::after {
@@ -86,18 +86,18 @@
         }
 
         .btn:hover {
-            background-color: #c1915e;
+            background-color: #c1121f;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Header */
         header {
-            background-color: rgba(245, 245, 220, 0.95);
+            background-color: rgba(10, 10, 10, 0.95);
             position: fixed;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -122,20 +122,6 @@
             height: 100%;
         }
 
-        .separator {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin: 0 10px;
-        }
-
-        .header-title {
-            height: 50px;
-        }
-
-        .header-title img {
-            height: 100%;
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -148,6 +134,8 @@
         .nav-links a {
             font-size: 1.1rem;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .hamburger {
@@ -159,7 +147,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(245, 245, 220, 0.85), rgba(232, 228, 217, 0.85)), url('assets/images/immagine1.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(26, 26, 26, 0.8)), url('assets/images/immagine1.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             text-align: center;
@@ -170,24 +158,24 @@
             margin: 0 auto;
         }
 
-        .hero-title {
-            max-width: 800px;
+        .hero-logo {
+            max-width: 500px;
             margin: 0 auto 30px;
         }
 
-        .hero-title img {
+        .hero-logo img {
             width: 100%;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 40px;
-            color: #7a6a5a;
+            color: #cccccc;
         }
 
         /* About Section */
         .about {
-            background-color: var(--light-bg);
+            background-color: var(--secondary-color);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
@@ -204,7 +192,7 @@
 
         .about-text p {
             margin-bottom: 20px;
-            color: #7a6a5a;
+            color: #cccccc;
             font-size: 1.1rem;
         }
 
@@ -212,14 +200,13 @@
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            opacity: 0.9;
         }
 
         /* Music Section */
@@ -234,10 +221,10 @@
         }
 
         .album-card {
-            background-color: var(--light-bg);
+            background-color: var(--secondary-color);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
             border: 1px solid var(--border-color);
         }
@@ -247,7 +234,7 @@
         }
 
         .album-image {
-            height: 280px; /* Quadrato 1:1 */
+            height: 280px;
             width: 100%;
             overflow: hidden;
         }
@@ -271,17 +258,17 @@
         .album-title {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #5a4a3a;
+            color: var(--text-color);
         }
 
         .album-info p {
-            color: #7a6a5a;
+            color: #cccccc;
             margin-bottom: 15px;
         }
 
         /* Social Banner Section */
         .social-banner {
-            background-color: var(--light-bg);
+            background-color: var(--secondary-color);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
             padding: 60px 0;
@@ -294,7 +281,7 @@
         .social-banner h2 {
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: #5a4a3a;
+            color: var(--text-color);
         }
 
         .social-banner-links {
@@ -334,52 +321,7 @@
 
         .social-banner-text {
             font-weight: 500;
-            color: #5a4a3a;
-        }
-
-        /* Tour Dates */
-        .tour {
-            background-color: var(--light-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .tour-dates {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .tour-item {
-            background-color: var(--primary-color);
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-        }
-
-        .tour-date {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #5a4a3a;
-        }
-
-        .tour-location {
-            flex: 1;
-            margin-left: 20px;
-        }
-
-        .tour-location h3 {
-            color: #5a4a3a;
-            font-size: 1.3rem;
-        }
-
-        .tour-location p {
-            color: #7a6a5a;
-            font-size: 1.1rem;
+            color: var(--text-color);
         }
 
         /* Merch Section */
@@ -393,7 +335,7 @@
             margin: 0 auto;
             overflow: hidden;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .merch-slides {
@@ -405,7 +347,7 @@
             min-width: 100%;
             padding: 40px;
             text-align: center;
-            background-color: var(--light-bg);
+            background-color: var(--secondary-color);
             border-radius: 10px;
         }
 
@@ -422,7 +364,7 @@
             height: 300px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .merch-image img {
@@ -439,7 +381,7 @@
         .merch-name {
             font-size: 2rem;
             margin-bottom: 15px;
-            color: #5a4a3a;
+            color: var(--text-color);
         }
 
         .merch-price {
@@ -450,7 +392,7 @@
         }
 
         .merch-description {
-            color: #7a6a5a;
+            color: #cccccc;
             margin-bottom: 25px;
             font-size: 1.1rem;
         }
@@ -479,7 +421,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(42, 42, 42, 0.7);
             border: none;
             width: 50px;
             height: 50px;
@@ -509,7 +451,7 @@
 
         /* Gallery */
         .gallery {
-            background-color: var(--light-bg);
+            background-color: var(--secondary-color);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
@@ -525,7 +467,7 @@
             overflow: hidden;
             border-radius: 10px;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             cursor: pointer;
         }
 
@@ -618,7 +560,7 @@
 
         .contact-info h3 {
             margin-bottom: 20px;
-            color: #5a4a3a;
+            color: var(--text-color);
             font-size: 1.8rem;
         }
 
@@ -653,7 +595,7 @@
             justify-content: center;
             width: 60px;
             height: 60px;
-            background-color: var(--light-bg);
+            background-color: var(--secondary-color);
             border-radius: 50%;
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
@@ -668,10 +610,10 @@
 
         /* Footer */
         footer {
-            background-color: #5a4a3a;
+            background-color: #000000;
             padding: 40px 0;
             text-align: center;
-            color: #f5f5dc;
+            color: #cccccc;
         }
 
         .footer-content {
@@ -702,8 +644,10 @@
         }
 
         .footer-links a {
-            color: #d4c8b8;
+            color: #cccccc;
             font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .footer-links a:hover {
@@ -712,7 +656,14 @@
 
         .copyright {
             font-size: 0.9rem;
-            color: #d4c8b8;
+            color: #999999;
+        }
+
+        /* Negozio Section */
+        .negozio {
+            background-color: var(--secondary-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         /* Responsive */
@@ -726,7 +677,7 @@
                 background-color: var(--primary-color);
                 flex-direction: column;
                 padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             }
 
             .nav-links li {
@@ -737,31 +688,12 @@
                 display: block;
             }
 
-            .header-title {
-                display: none;
-            }
-
-            .separator {
-                display: none;
-            }
-
-            .hero-title {
-                max-width: 500px;
+            .hero-logo {
+                max-width: 300px;
             }
 
             .about-content {
                 flex-direction: column;
-            }
-
-            .tour-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .tour-location {
-                margin-left: 0;
-                margin-top: 10px;
-                margin-bottom: 15px;
             }
 
             .social-links, .social-banner-links {
@@ -805,20 +737,15 @@
                     <a href="#" class="logo">
                         <img src="assets/images/logo.png" alt="Abbuopillonzi">
                     </a>
-                    <div class="separator">-</div>
-                    <div class="header-title">
-                        <img src="assets/images/Titolo.png" alt="Abbuopillonzi">
-                    </div>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#music">Album e Singoli</a></li>
-                    <li><a href="#social">Social</a></li>
-                    <li><a href="#tour">Tour</a></li>
                     <li><a href="#merch">Merch</a></li>
+                    <li><a href="#social">Social</a></li>
                     <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#negozio">Negozio</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -831,8 +758,8 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-title">
-                    <img src="assets/images/Titolo.png" alt="Abbuopillonzi">
+                <div class="hero-logo">
+                    <img src="assets/images/logo.png" alt="Abbuopillonzi">
                 </div>
                 <p>La musica che scuote l'anima e accende la passione</p>
                 <a href="#music" class="btn">Ascolta Ora</a>
@@ -916,51 +843,6 @@
         </div>
     </section>
 
-    <!-- Social Banner Section -->
-    <section id="social" class="social-banner">
-        <div class="container">
-            <div class="social-banner-content">
-                <h2>Seguici sui Social</h2>
-                <div class="social-banner-links">
-                    <a href="https://www.instagram.com/abp___official/" target="_blank" class="social-banner-link">
-                        <div class="social-banner-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="social-banner-text">Instagram</div>
-                    </a>
-                    <a href="https://www.youtube.com/@abp___official" target="_blank" class="social-banner-link">
-                        <div class="social-banner-icon">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <div class="social-banner-text">YouTube</div>
-                    </a>
-                    <a href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=WDt44MRaSw6j6UYfIiC2xQ" target="_blank" class="social-banner-link">
-                        <div class="social-banner-icon">
-                            <i class="fab fa-spotify"></i>
-                        </div>
-                        <div class="social-banner-text">Spotify</div>
-                    </a>
-                    <a href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_7ugu3JBln25ZV8XCiZokNn38F" target="_blank" class="social-banner-link">
-                        <div class="social-banner-icon">
-                            <i class="fab fa-amazon"></i>
-                        </div>
-                        <div class="social-banner-text">Amazon Music</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tour Section -->
-    <section id="tour" class="tour">
-        <div class="container">
-            <h2 class="section-title">Prossimi Concerti</h2>
-            <div class="tour-dates" id="tour-dates-container">
-                <!-- I concerti verranno caricati dinamicamente da JavaScript -->
-            </div>
-        </div>
-    </section>
-
     <!-- Merch Section -->
     <section id="merch" class="merch">
         <div class="container">
@@ -1027,6 +909,41 @@
         </div>
     </section>
 
+    <!-- Social Banner Section -->
+    <section id="social" class="social-banner">
+        <div class="container">
+            <div class="social-banner-content">
+                <h2>Seguici sui Social</h2>
+                <div class="social-banner-links">
+                    <a href="https://www.instagram.com/abp___official/" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="social-banner-text">Instagram</div>
+                    </a>
+                    <a href="https://www.youtube.com/@abp___official" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="social-banner-text">YouTube</div>
+                    </a>
+                    <a href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=WDt44MRaSw6j6UYfIiC2xQ" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-spotify"></i>
+                        </div>
+                        <div class="social-banner-text">Spotify</div>
+                    </a>
+                    <a href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_7ugu3JBln25ZV8XCiZokNn38F" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-amazon"></i>
+                        </div>
+                        <div class="social-banner-text">Amazon Music</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="container">
@@ -1050,6 +967,17 @@
                 <div class="gallery-item" onclick="openModal(5)">
                     <img src="assets/images/immagine6.jpg" alt="Gallery 6">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Negozio Section -->
+    <section id="negozio" class="negozio">
+        <div class="container">
+            <h2 class="section-title">Negozio Online</h2>
+            <div style="text-align: center; color: #cccccc;">
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">Presto disponibile il nostro negozio online con tutti i prodotti!</p>
+                <a href="#merch" class="btn">Scopri il Merch</a>
             </div>
         </div>
     </section>
@@ -1104,11 +1032,10 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#music">Album e Singoli</a></li>
-                    <li><a href="#social">Social</a></li>
-                    <li><a href="#tour">Tour</a></li>
                     <li><a href="#merch">Merch</a></li>
+                    <li><a href="#social">Social</a></li>
                     <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#negozio">Negozio</a></li>
                 </ul>
                 <p class="copyright">&copy; 2023 Abbuopillonzi. Tutti i diritti riservati.</p>
             </div>
@@ -1155,9 +1082,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if(window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(245, 245, 220, 0.98)';
+                header.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
             } else {
-                header.style.backgroundColor = 'rgba(245, 245, 220, 0.95)';
+                header.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
             }
         });
 
@@ -1171,20 +1098,22 @@
 
         function renderConcerts() {
             const container = document.getElementById('tour-dates-container');
-            container.innerHTML = '';
-            
-            concerts.forEach(concert => {
-                const concertElement = document.createElement('div');
-                concertElement.className = 'tour-item';
-                concertElement.innerHTML = `
-                    <div class="tour-date">${concert.date}</div>
-                    <div class="tour-location">
-                        <h3>${concert.city}</h3>
-                        <p>${concert.venue}</p>
-                    </div>
-                `;
-                container.appendChild(concertElement);
-            });
+            if(container) {
+                container.innerHTML = '';
+                
+                concerts.forEach(concert => {
+                    const concertElement = document.createElement('div');
+                    concertElement.className = 'tour-item';
+                    concertElement.innerHTML = `
+                        <div class="tour-date">${concert.date}</div>
+                        <div class="tour-location">
+                            <h3>${concert.city}</h3>
+                            <p>${concert.venue}</p>
+                        </div>
+                    `;
+                    container.appendChild(concertElement);
+                });
+            }
         }
 
         // Funzioni per la galleria modale
@@ -1284,8 +1213,10 @@
         }
 
         // Aggiungi event listeners
-        prevButton.addEventListener('click', prevSlide);
-        nextButton.addEventListener('click', nextSlide);
+        if(prevButton && nextButton) {
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+        }
 
         // Aggiungi event listeners per i dots
         dots.forEach(dot => {
@@ -1298,7 +1229,9 @@
         // Inizializzazione
         document.addEventListener('DOMContentLoaded', function() {
             renderConcerts();
-            showSlide(0); // Mostra la prima slide del carosello merch
+            if(slides.length > 0) {
+                showSlide(0); // Mostra la prima slide del carosello merch
+            }
         });
     </script>
 </body>
