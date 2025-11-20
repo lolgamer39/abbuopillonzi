@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbuopillonzi - Sito Ufficiale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e stili base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #f5f5dc; /* Beige chiaro */
+            --secondary-color: #e8e4d9;
+            --accent-color: #d4a574;
+            --text-color: #5a4a3a;
+            --light-bg: #ffffff;
+            --border-color: #d6d0c0;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            position: relative;
+            color: #5a4a3a;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+        }
+
+        .btn:hover {
+            background-color: #c1915e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(245, 245, 220, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .logo img {
+            height: 100%;
+        }
+
+        .separator {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin: 0 10px;
+        }
+
+        .header-title {
+            height: 50px;
+        }
+
+        .header-title img {
+            height: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(245, 245, 220, 0.85), rgba(232, 228, 217, 0.85)), url('assets/images/immagine1.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-title img {
+            width: 100%;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #7a6a5a;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #7a6a5a;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+        }
+
+        /* Music Section */
+        .music {
+            background-color: var(--primary-color);
+        }
+
+        .albums {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .album-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .album-image {
+            height: 280px; /* Quadrato 1:1 */
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .album-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .album-card:hover .album-image img {
+            transform: scale(1.1);
+        }
+
+        .album-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .album-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #5a4a3a;
+        }
+
+        .album-info p {
+            color: #7a6a5a;
+            margin-bottom: 15px;
+        }
+
+        /* Social Banner Section */
+        .social-banner {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 60px 0;
+        }
+
+        .social-banner-content {
+            text-align: center;
+        }
+
+        .social-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #5a4a3a;
+        }
+
+        .social-banner-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-banner-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 120px;
+        }
+
+        .social-banner-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .social-banner-icon:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .social-banner-text {
+            font-weight: 500;
+            color: #5a4a3a;
+        }
+
+        /* Tour Dates */
+        .tour {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tour-dates {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tour-item {
+            background-color: var(--primary-color);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .tour-date {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #5a4a3a;
+        }
+
+        .tour-location {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .tour-location h3 {
+            color: #5a4a3a;
+            font-size: 1.3rem;
+        }
+
+        .tour-location p {
+            color: #7a6a5a;
+            font-size: 1.1rem;
+        }
+
+        /* Merch Section */
+        .merch {
+            background-color: var(--primary-color);
+        }
+
+        .merch-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .merch-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .merch-slide {
+            min-width: 100%;
+            padding: 40px;
+            text-align: center;
+            background-color: var(--light-bg);
+            border-radius: 10px;
+        }
+
+        .merch-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .merch-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .merch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .merch-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .merch-name {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #5a4a3a;
+        }
+
+        .merch-price {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .merch-description {
+            color: #7a6a5a;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--accent-color);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-arrow:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        /* Gallery */
+        .gallery {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Modal per la galleria */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Contact */
+        .contact {
+            background-color: var(--primary-color);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #5a4a3a;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-detail i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            font-size: 1.5rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5a4a3a;
+            padding: 40px 0;
+            text-align: center;
+            color: #f5f5dc;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links li {
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            color: #d4c8b8;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #d4c8b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .header-title {
+                display: none;
+            }
+
+            .separator {
+                display: none;
+            }
+
+            .hero-title {
+                max-width: 500px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .tour-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tour-location {
+                margin-left: 0;
+                margin-top: 10px;
+                margin-bottom: 15px;
+            }
+
+            .social-links, .social-banner-links {
+                gap: 15px;
+            }
+
+            .social-link, .social-banner-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .social-banner-link {
+                width: 100px;
+            }
+
+            .merch-images {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .merch-image {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <img src="assets/images/logo.png" alt="Abbuopillonzi">
+                    </a>
+                    <div class="separator">-</div>
+                    <div class="header-title">
+                        <img src="assets/images/Titolo.png" alt="Abbuopillonzi">
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#music">Album e Singoli</a></li>
+                    <li><a href="#social">Social</a></li>
+                    <li><a href="#tour">Tour</a></li>
+                    <li><a href="#merch">Merch</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <img src="assets/images/Titolo.png" alt="Abbuopillonzi">
+                </div>
+                <p>La musica che scuote l'anima e accende la passione</p>
+                <a href="#music" class="btn">Ascolta Ora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Chi Siamo</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Gli Abbuopillonzi sono una band emergente che fonde rock, blues e sonorità contemporanee per creare un sound unico e coinvolgente. Nati dalle strade di una città senza nome, portano nelle loro note le storie di vita quotidiana, le passioni e le lotte di chi cerca la propria voce nel mondo.</p>
+                    <p>Con testi profondi e melodie che rimangono impresse, la band ha rapidamente conquistato un pubblico fedele e sta facendo parlare di sé nell'underground musicale italiano.</p>
+                    <a href="#contact" class="btn">Contattaci</a>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/immagine2.jpg" alt="Abbuopillonzi Band">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="music">
+        <div class="container">
+            <h2 class="section-title">Album e Singoli</h2>
+            <div class="albums">
+                <div class="album-card">
+                    <div class="album-image">
+                        <img src="assets/images/vips.jpg" alt="Album VIPS">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">VIPS</h3>
+                        <p>Il nostro primo album che racchiude l'essenza del nostro sound. Dieci tracce che raccontano storie di riscatto e rinascita.</p>
+                        <a href="https://open.spotify.com/intl-it/album/6slRf45zXBVwspBf3XR3EP?si=jmiBTgzyRDqGWF_Kukgy7Q" target="_blank" class="btn">Ascolta</a>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-image">
+                        <img src="assets/images/saxo-spirito.jpg" alt="Singolo Saxo Spirito">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Saxo Spirito</h3>
+                        <p>Un brano energico che unisce ritmi incalzanti e un sax coinvolgente, perfetto per far vibrare le corde dell'anima.</p>
+                        <a href="https://open.spotify.com/intl-it/album/65nWvHaBbxTT6u34JMm0Zu?si=e6p6slGXSYSQ1MH3AVv7oA" target="_blank" class="btn">Ascolta</a>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-image">
+                        <img src="assets/images/cristo-in-pensione.jpg" alt="Singolo Cristo In Pensione">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Cristo In Pensione</h3>
+                        <p>Una riflessione profonda sulla società contemporanea, con sonorità rock e testi che fanno pensare.</p>
+                        <a href="https://open.spotify.com/intl-it/album/2WYBDcLIc89f0u0bHgJtnv?si=9KDXNTutT6uLzWSMN41-zA" target="_blank" class="btn">Ascolta</a>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-image">
+                        <img src="assets/images/maracuja.jpg" alt="Singolo Maracuja">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Maracuja</h3>
+                        <p>Un brano estivo e ritmato che trasporta in mondi esotici con il suo sound fresco e coinvolgente.</p>
+                        <a href="https://open.spotify.com/intl-it/album/3MTilXpEj1PNWkzKrx8kpE?si=lS0D4bL0Sn-dav0J944ccg" target="_blank" class="btn">Ascolta</a>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-image">
+                        <img src="assets/images/lontano-dalla-gente.jpg" alt="Singolo Lontano Dalla Gente">
+                    </div>
+                    <div class="album-info">
+                        <h3 class="album-title">Lontano Dalla Gente</h3>
+                        <p>Una ballata introspettiva che esplora il bisogno di solitudine e riflessione nella società moderna.</p>
+                        <a href="https://open.spotify.com/intl-it/album/3Cm1TyxX37G6bt9SYkamLG?si=YeVXuQhxQR-0RjayktUWww" target="_blank" class="btn">Ascolta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Banner Section -->
+    <section id="social" class="social-banner">
+        <div class="container">
+            <div class="social-banner-content">
+                <h2>Seguici sui Social</h2>
+                <div class="social-banner-links">
+                    <a href="https://www.instagram.com/abp___official/" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="social-banner-text">Instagram</div>
+                    </a>
+                    <a href="https://www.youtube.com/@abp___official" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="social-banner-text">YouTube</div>
+                    </a>
+                    <a href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=WDt44MRaSw6j6UYfIiC2xQ" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-spotify"></i>
+                        </div>
+                        <div class="social-banner-text">Spotify</div>
+                    </a>
+                    <a href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_7ugu3JBln25ZV8XCiZokNn38F" target="_blank" class="social-banner-link">
+                        <div class="social-banner-icon">
+                            <i class="fab fa-amazon"></i>
+                        </div>
+                        <div class="social-banner-text">Amazon Music</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Section -->
+    <section id="tour" class="tour">
+        <div class="container">
+            <h2 class="section-title">Prossimi Concerti</h2>
+            <div class="tour-dates" id="tour-dates-container">
+                <!-- I concerti verranno caricati dinamicamente da JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Merch Section -->
+    <section id="merch" class="merch">
+        <div class="container">
+            <h2 class="section-title">Merchandising</h2>
+            <div class="merch-carousel">
+                <div class="merch-slides">
+                    <!-- Felpe -->
+                    <div class="merch-slide">
+                        <div class="merch-images">
+                            <div class="merch-image">
+                                <img src="assets/images/merch1.jpg" alt="Felpa ABP nera">
+                            </div>
+                            <div class="merch-image">
+                                <img src="assets/images/merch2.jpg" alt="Felpa ABP bianca">
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3 class="merch-name">Felpa ABP</h3>
+                            <p class="merch-price">€25.00</p>
+                            <p class="merch-description">Felpa con cappuccio di alta qualità, disponibile in nero e bianco. Logo ABP stampato sul petto.</p>
+                            <a href="#" class="btn">Acquista</a>
+                        </div>
+                    </div>
+                    <!-- Magliette -->
+                    <div class="merch-slide">
+                        <div class="merch-images">
+                            <div class="merch-image">
+                                <img src="assets/images/merch3.jpg" alt="Maglietta ABP bianca">
+                            </div>
+                            <div class="merch-image">
+                                <img src="assets/images/merch4.jpg" alt="Maglietta ABP nera">
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3 class="merch-name">Maglietta ABP</h3>
+                            <p class="merch-price">€15.00</p>
+                            <p class="merch-description">Maglietta in cotone 100%, disponibile in bianco e nero. Design esclusivo degli Abbuopillonzi.</p>
+                            <a href="#" class="btn">Acquista</a>
+                        </div>
+                    </div>
+                    <!-- CD -->
+                    <div class="merch-slide">
+                        <div class="merch-images">
+                            <div class="merch-image">
+                                <img src="assets/images/merch5.jpg" alt="CD VIPS">
+                            </div>
+                        </div>
+                        <div class="merch-info">
+                            <h3 class="merch-name">CD VIPS</h3>
+                            <p class="merch-price">€15.00</p>
+                            <p class="merch-description">Il primo album degli Abbuopillonzi, "VIPS", in formato CD. Include 10 tracce che racchiudono l'essenza del nostro sound.</p>
+                            <a href="#" class="btn">Acquista</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-prev">&#10094;</button>
+                <button class="carousel-arrow carousel-next">&#10095;</button>
+                <div class="carousel-nav">
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galleria</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal(0)">
+                    <img src="assets/images/immagine1.jpg" alt="Gallery 1">
+                </div>
+                <div class="gallery-item" onclick="openModal(1)">
+                    <img src="assets/images/immagine2.jpg" alt="Gallery 2">
+                </div>
+                <div class="gallery-item" onclick="openModal(2)">
+                    <img src="assets/images/immagine3.jpg" alt="Gallery 3">
+                </div>
+                <div class="gallery-item" onclick="openModal(3)">
+                    <img src="assets/images/immagine4.jpg" alt="Gallery 4">
+                </div>
+                <div class="gallery-item" onclick="openModal(4)">
+                    <img src="assets/images/immagine5.jpg" alt="Gallery 5">
+                </div>
+                <div class="gallery-item" onclick="openModal(5)">
+                    <img src="assets/images/immagine6.jpg" alt="Gallery 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal per la galleria -->
+    <div id="galleryModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content-container">
+            <img class="modal-content" id="modalImage" src="" alt="Immagine ingrandita">
+            <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+            <a class="next" onclick="changeImage(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contattaci</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Resta in Contatto</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <p>abbuopillonzi@gmail.com</p>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Firenze, Italia</p>
+                        </div>
+                    </div>
+                    <h3>Seguici</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/abp___official/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@abp___official" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=WDt44MRaSw6j6UYfIiC2xQ" target="_blank" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_7ugu3JBln25ZV8XCiZokNn38F" target="_blank" class="social-link"><i class="fab fa-amazon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">
+                    <img src="assets/images/logo.png" alt="Abbuopillonzi">
+                </a>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#music">Album e Singoli</a></li>
+                    <li><a href="#social">Social</a></li>
+                    <li><a href="#tour">Tour</a></li>
+                    <li><a href="#merch">Merch</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+                <p class="copyright">&copy; 2023 Abbuopillonzi. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling per i link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Menu mobile toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Chiudi il menu mobile quando si clicca su un link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+
+        // Cambia lo stile dell'header quando si scorre
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(245, 245, 220, 0.98)';
+            } else {
+                header.style.backgroundColor = 'rgba(245, 245, 220, 0.95)';
+            }
+        });
+
+        // Gestione concerti dinamici
+        const concerts = [
+            { date: "15 SET", city: "Roma, IT", venue: "Auditorium Parco della Musica" },
+            { date: "22 SET", city: "Milano, IT", venue: "Alcatraz" },
+            { date: "05 OTT", city: "Torino, IT", venue: "Hiroshima Mon Amour" },
+            { date: "18 OTT", city: "Firenze, IT", venue: "Viper Theatre" }
+        ];
+
+        function renderConcerts() {
+            const container = document.getElementById('tour-dates-container');
+            container.innerHTML = '';
+            
+            concerts.forEach(concert => {
+                const concertElement = document.createElement('div');
+                concertElement.className = 'tour-item';
+                concertElement.innerHTML = `
+                    <div class="tour-date">${concert.date}</div>
+                    <div class="tour-location">
+                        <h3>${concert.city}</h3>
+                        <p>${concert.venue}</p>
+                    </div>
+                `;
+                container.appendChild(concertElement);
+            });
+        }
+
+        // Funzioni per la galleria modale
+        let currentImageIndex = 0;
+        const galleryImages = [
+            'assets/images/immagine1.jpg',
+            'assets/images/immagine2.jpg',
+            'assets/images/immagine3.jpg',
+            'assets/images/immagine4.jpg',
+            'assets/images/immagine5.jpg',
+            'assets/images/immagine6.jpg'
+        ];
+
+        function openModal(index) {
+            currentImageIndex = index;
+            document.getElementById('galleryModal').style.display = 'block';
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            }
+            
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+        }
+
+        // Chiudi il modal cliccando fuori dall'immagine
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Navigazione con tastiera
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('galleryModal').style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
+
+        // Carosello Merch
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.merch-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+
+        function showSlide(index) {
+            // Nascondi tutte le slide
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            // Rimuovi la classe active da tutti i dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Mostra la slide corrente
+            slides[index].style.display = 'block';
+            
+            // Aggiungi la classe active al dot corrente
+            dots[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let nextIndex = currentSlide + 1;
+            if (nextIndex >= slides.length) {
+                nextIndex = 0;
+            }
+            showSlide(nextIndex);
+        }
+
+        function prevSlide() {
+            let prevIndex = currentSlide - 1;
+            if (prevIndex < 0) {
+                prevIndex = slides.length - 1;
+            }
+            showSlide(prevIndex);
+        }
+
+        // Aggiungi event listeners
+        prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+
+        // Aggiungi event listeners per i dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                showSlide(index);
+            });
+        });
+
+        // Inizializzazione
+        document.addEventListener('DOMContentLoaded', function() {
+            renderConcerts();
+            showSlide(0); // Mostra la prima slide del carosello merch
+        });
+    </script>
+</body>
+</html>
