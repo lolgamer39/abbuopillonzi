@@ -17,7 +17,7 @@
         :root {
             --primary-color: #0a0a0a;
             --secondary-color: #1a1a1a;
-            --accent-color: #e63946;
+            --accent-color: #DAA520;
             --text-color: #ffffff;
             --light-bg: #2a2a2a;
             --border-color: #444444;
@@ -74,7 +74,7 @@
             display: inline-block;
             padding: 16px 40px;
             background-color: var(--accent-color);
-            color: white;
+            color: #000;
             border: none;
             border-radius: 30px;
             font-weight: bold;
@@ -86,7 +86,7 @@
         }
 
         .btn:hover {
-            background-color: #c1121f;
+            background-color: #b8860b;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
@@ -237,17 +237,22 @@
             height: 280px;
             width: 100%;
             overflow: hidden;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .album-image img {
-            width: 100%;
+            width: auto;
             height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            object-fit: contain;
             transition: transform 0.5s ease;
         }
 
         .album-card:hover .album-image img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .album-info {
@@ -316,7 +321,7 @@
         .social-banner-icon:hover {
             background-color: var(--accent-color);
             transform: translateY(-5px);
-            color: white;
+            color: #000;
         }
 
         .social-banner-text {
@@ -365,12 +370,17 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .merch-image img {
-            width: 100%;
+            width: auto;
             height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .merch-info {
@@ -438,7 +448,7 @@
 
         .carousel-arrow:hover {
             background-color: var(--accent-color);
-            color: white;
+            color: #000;
         }
 
         .carousel-prev {
@@ -605,7 +615,7 @@
         .social-link:hover {
             background-color: var(--accent-color);
             transform: translateY(-5px);
-            color: white;
+            color: #000;
         }
 
         /* Footer */
@@ -651,7 +661,7 @@
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--accent-color);
         }
 
         .copyright {
@@ -1088,34 +1098,6 @@
             }
         });
 
-        // Gestione concerti dinamici
-        const concerts = [
-            { date: "15 SET", city: "Roma, IT", venue: "Auditorium Parco della Musica" },
-            { date: "22 SET", city: "Milano, IT", venue: "Alcatraz" },
-            { date: "05 OTT", city: "Torino, IT", venue: "Hiroshima Mon Amour" },
-            { date: "18 OTT", city: "Firenze, IT", venue: "Viper Theatre" }
-        ];
-
-        function renderConcerts() {
-            const container = document.getElementById('tour-dates-container');
-            if(container) {
-                container.innerHTML = '';
-                
-                concerts.forEach(concert => {
-                    const concertElement = document.createElement('div');
-                    concertElement.className = 'tour-item';
-                    concertElement.innerHTML = `
-                        <div class="tour-date">${concert.date}</div>
-                        <div class="tour-location">
-                            <h3>${concert.city}</h3>
-                            <p>${concert.venue}</p>
-                        </div>
-                    `;
-                    container.appendChild(concertElement);
-                });
-            }
-        }
-
         // Funzioni per la galleria modale
         let currentImageIndex = 0;
         const galleryImages = [
@@ -1228,7 +1210,6 @@
 
         // Inizializzazione
         document.addEventListener('DOMContentLoaded', function() {
-            renderConcerts();
             if(slides.length > 0) {
                 showSlide(0); // Mostra la prima slide del carosello merch
             }
