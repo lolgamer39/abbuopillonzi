@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<link rel="icon" type="image/png" href="assets/images/favicon.png">
   <meta charset="UTF-8" />
   <title>Abbuopillonzi | ABP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -965,102 +964,12 @@
       }
     }
   
-    /* Override: citazioni + novità una sotto l'altra */
-    .citazioni-novita-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    /* Social icons PNG */
-    .social-icons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .social-icon {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      border: 2px solid var(--purple);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    }
-
-    .social-icon img {
-      width: 60%;
-      height: auto;
-      display: block;
-      transition: transform 0.2s ease;
-    }
-
-    .social-icon:hover {
-      transform: scale(1.15) translateY(-1px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.7);
-    }
-
-    .social-icon:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Merch immagini piene senza bordi extra */
-    .merch-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      background: transparent;
-      display: block;
-    }
-
-    /* Frecce slider con immagini */
-    .quote-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: none;
-      background: transparent;
-      padding: 0;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease, filter 0.2s ease;
-    }
-
-    .quote-btn img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .quote-btn:hover {
-      transform: scale(1.1);
-      filter: brightness(1.2);
-    }
-
-    /* Visibilità icone Spotify */
-    .track-spotify i {
-      font-size: 1.5rem;
-      color: var(--accent);
-    }
-
-    .spotify-btn i {
-      font-size: 1.6rem;
-      color: #111;
-    }
-
-  
-.track-spotify-img {position:absolute; bottom:10px; right:10px; width:55px; opacity:.9; transition:.2s;}
-.track-disc:hover .track-spotify-img{transform:scale(1.08); opacity:1;}
-.social-icon{width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;transition:.2s;}
-.social-icon img{width:70%;height:70%;object-fit:contain;}
-.merch-card img{width:100%;height:auto;object-fit:cover;}
+.news-image {
+    aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+}
 
 </style>
 </head>
@@ -1130,15 +1039,23 @@
             </p>
           </div>
           <div class="follow-links">
-            
-<div class="social-icons">
-  <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank"><img src="assets/images/tiktok.png"></a>
-  <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank"><img src="assets/images/spotify.png"></a>
-  <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank"><img src="assets/images/instagram.png"></a>
-  <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank"><img src="assets/images/youtube.png"></a>
-  <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX" target="_blank"><img src="assets/images/amazon.png"></a>
-</div>
-
+            <div class="social-links">
+              <a href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-spotify"></i> Spotify
+              </a>
+              <a href="https://www.instagram.com/abp___official/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram"></i> Instagram
+              </a>
+              <a href="https://www.youtube.com/@abp___official" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-youtube"></i> YouTube
+              </a>
+              <a href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+              </a>
+              <a href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_v0v91yTGP2zTFeYWkx7pHtIIJ" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-amazon"></i> Amazon Music
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1157,8 +1074,12 @@
             <div class="quote-author" id="quoteAuthor"></div>
 
             <div class="quote-controls">
-              <button class="quote-btn" id="quotePrev"><img src="assets/images/frecciasx.png"></button>
-              <button class="quote-btn" id="quoteNext"><img src="assets/images/frecciadx.png"></button>
+              <button class="quote-btn" id="quotePrev" aria-label="Frase precedente">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button class="quote-btn" id="quoteNext" aria-label="Frase successiva">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
             </div>
             <div class="quote-indicator" id="quoteIndicator"></div>
           </div>
@@ -1222,7 +1143,7 @@
         <div class="spotify-hero-bg">
           <div class="spotify-hero-tag">Ascoltaci ora.</div>
           <h2 class="spotify-hero-title">Abbuopillonzi</h2>
-<div style="margin-top:20px;"><img src="assets/images/spotifybar.png" style="width:80px;"></div>
+<div style="margin-top:20px;text-align:center;"><img src="assets/images/spotifybar.png" style="width:80px;"></div>
 
           <a class="spotify-btn" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-spotify"></i>
@@ -1274,10 +1195,10 @@
 
         <!-- Galleria sotto il merch -->
         <div class="gallery-row">
-          <img src="assets/images/foto1.jpg" alt="Abbuopillonzi live 1">
-          <img src="assets/images/foto2.jpg" alt="Abbuopillonzi live 2">
-          <img src="assets/images/foto3.jpg" alt="Abbuopillonzi live 3">
-        </div>
+    <img src="assets/images/foto2.jpg" alt="ABP foto">
+    <img src="assets/images/foto3.jpg" alt="ABP foto">
+    <img src="assets/images/foto5.jpg" alt="ABP foto">
+</div>
       </div>
     </section>
 
@@ -1292,7 +1213,7 @@
               <div class="track-disc" style="background-image: url('assets/images/maracuja.jpg');">
                 <div class="track-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
+                </div>
               </div>
             </a>
             <div class="track-title">"Maracuja"</div>
@@ -1304,7 +1225,7 @@
               <div class="track-disc" style="background-image: url('assets/images/vips.jpg');">
                 <div class="track-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
+                </div>
               </div>
             </a>
             <div class="track-title">"VIPS"</div>
@@ -1316,7 +1237,7 @@
               <div class="track-disc" style="background-image: url('assets/images/lontano-dalla-gente.jpg');">
                 <div class="track-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
+                </div>
               </div>
             </a>
             <div class="track-title">"Lontano Dalla Gente"</div>
@@ -1329,7 +1250,7 @@
           <h3>Guarda l'ultimo video</h3>
           <div class="video-frame">
             <!-- Puoi sostituire l'ID del video con un altro se pubblichi un nuovo singolo -->
-            <iframe src="https://www.youtube.com/embed/73rDhDsiiLo" title="ABP - Ultimo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/67VA-NPtY4w" title="ABP - Ultimo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
       </div>
