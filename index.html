@@ -304,33 +304,27 @@
       background: rgba(255, 255, 255, 0.45);
     }
 
-    .social-icons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
     .social-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: rgba(255, 255, 255, 0.8);
-      transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-      background: transparent;
-    }
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--purple);
+  background: transparent;
+  transition: .25s;
+}
 
-    .social-icon:hover {
-      transform: scale(1.15) translateY(-1px);
-      border-color: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-    }
+.social-icon img {
+  width: 55%;
+  transition: .25s;
+}
+
+.social-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,.5);
+}
 
     /* QUOTE SLIDER + NOVITA */
     #citazioni-novita {
@@ -377,20 +371,24 @@
     }
 
     .quote-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      background: rgba(0, 0, 0, 0.35);
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-      z-index: 2;
-    }
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.quote-btn img {
+  width: 100%;
+  filter: brightness(1);
+}
+
+.quote-btn:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.3);
+}
+
 
     .quote-btn:hover {
       background: rgba(0, 0, 0, 0.7);
@@ -1054,22 +1052,23 @@
             <span class="follow-line"></span>
           </div>
           <div class="social-icons">
-            <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-spotify"></i>
-            </a>
-            <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_v0v91yTGP2zTFeYWkx7pHtIIJ" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-amazon"></i>
-            </a>
-          </div>
+  <a class="social-icon" href="https://www.tiktok.com/@abp___official" target="_blank">
+    <img src="assets/images/tiktok.png" alt="TikTok">
+  </a>
+  <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank">
+    <img src="assets/images/spotify.png" alt="Spotify">
+  </a>
+  <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank">
+    <img src="assets/images/instagram.png" alt="Instagram">
+  </a>
+  <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank">
+    <img src="assets/images/youtube.png" alt="YouTube">
+  </a>
+  <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX" target="_blank">
+    <img src="assets/images/amazon.png" alt="Amazon Music">
+  </a>
+</div>
+
         </div>
       </div>
     </section>
@@ -1087,12 +1086,14 @@
             <div class="quote-author" id="quoteAuthor"></div>
 
             <div class="quote-controls">
-              <button class="quote-btn" id="quotePrev" aria-label="Frase precedente">
-                <i class="fa-solid fa-arrow-left"></i>
-              </button>
-              <button class="quote-btn" id="quoteNext" aria-label="Frase successiva">
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
+              <button class="quote-btn" id="quotePrev">
+  <img src="assets/images/frecciasx.png" alt="Precedente">
+</button>
+
+<button class="quote-btn" id="quoteNext">
+  <img src="assets/images/frecciadx.png" alt="Successiva">
+</button>
+
             </div>
             <div class="quote-indicator" id="quoteIndicator"></div>
           </div>
