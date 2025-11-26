@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
   <meta charset="UTF-8" />
   <title>Abbuopillonzi | ABP</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1054,7 +1055,14 @@
       color: #111;
     }
 
-  </style>
+  
+.track-spotify-img {position:absolute; bottom:10px; right:10px; width:55px; opacity:.9; transition:.2s;}
+.track-disc:hover .track-spotify-img{transform:scale(1.08); opacity:1;}
+.social-icon{width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;transition:.2s;}
+.social-icon img{width:70%;height:70%;object-fit:contain;}
+.merch-card img{width:100%;height:auto;object-fit:cover;}
+
+</style>
 </head>
 <body>
   <!-- HEADER -->
@@ -1122,23 +1130,15 @@
             </p>
           </div>
           <div class="follow-links">
-            <div class="social-icons">
-  <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank" rel="noopener noreferrer">
-    <img src="assets/images/tiktok.png" alt="TikTok">
-  </a>
-  <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
-    <img src="assets/images/spotify.png" alt="Spotify">
-  </a>
-  <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank" rel="noopener noreferrer">
-    <img src="assets/images/instagram.png" alt="Instagram">
-  </a>
-  <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank" rel="noopener noreferrer">
-    <img src="assets/images/youtube.png" alt="YouTube">
-  </a>
-  <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_v0v91yTGP2zTFeYWkx7pHtIIJ" target="_blank" rel="noopener noreferrer">
-    <img src="assets/images/amazon.png" alt="Amazon Music">
-  </a>
+            
+<div class="social-icons">
+  <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank"><img src="assets/images/tiktok.png"></a>
+  <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank"><img src="assets/images/spotify.png"></a>
+  <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank"><img src="assets/images/instagram.png"></a>
+  <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank"><img src="assets/images/youtube.png"></a>
+  <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX" target="_blank"><img src="assets/images/amazon.png"></a>
 </div>
+
           </div>
         </div>
       </div>
@@ -1157,12 +1157,8 @@
             <div class="quote-author" id="quoteAuthor"></div>
 
             <div class="quote-controls">
-              <button class="quote-btn" id="quotePrev" aria-label="Frase precedente">
-                <img src="assets/images/frecciasx.png" alt="Precedente">
-              </button>
-              <button class="quote-btn" id="quoteNext" aria-label="Frase successiva">
-                <img src="assets/images/frecciadx.png" alt="Successiva">
-              </button>
+              <button class="quote-btn" id="quotePrev"><img src="assets/images/frecciasx.png"></button>
+              <button class="quote-btn" id="quoteNext"><img src="assets/images/frecciadx.png"></button>
             </div>
             <div class="quote-indicator" id="quoteIndicator"></div>
           </div>
@@ -1295,7 +1291,7 @@
               <div class="track-disc" style="background-image: url('assets/images/maracuja.jpg');">
                 <div class="track-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                </div>
+                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
               </div>
             </a>
             <div class="track-title">"Maracuja"</div>
@@ -1307,7 +1303,7 @@
               <div class="track-disc" style="background-image: url('assets/images/vips.jpg');">
                 <div class="track-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                </div>
+                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
               </div>
             </a>
             <div class="track-title">"VIPS"</div>
@@ -1319,7 +1315,7 @@
               <div class="track-disc" style="background-image: url('assets/images/lontano-dalla-gente.jpg');">
                 <div class="track-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                </div>
+                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
               </div>
             </a>
             <div class="track-title">"Lontano Dalla Gente"</div>
