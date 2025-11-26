@@ -1,1 +1,24 @@
+[
+  {
+    "titolo": "Uscita album VIPS",
+    "sottotitolo": "Esce finalmente il nostro primo album: VIPS (Vivo In Pessimo Stato).",
+    "data": "26/10/2023",
+    "immagine": "assets/images/vips.jpg",
+    "link": "https://open.spotify.com/album/......"
+  },
+  {
+    "titolo": "Intervista per Radio Giglio Rosso",
+    "sottotitolo": "Un'intervista ricca di spunti e aneddoti del nostro gruppo.",
+    "data": "15/09/2023",
+    "immagine": "assets/images/foto1.jpg",
+    "link": "https://youtube.com/......."
+  },
+  {
+    "titolo": "Nuovi singoli disponibili!",
+    "sottotitolo": "Sono usciti Maracuja e Lontano Dalla Gente!",
+    "data": "01/08/2023",
+    "immagine": "assets/images/maracuja.jpg",
+    "link": "https://open.spotify.com/track/......"
+  }
+]
 
