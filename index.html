@@ -180,6 +180,10 @@
       color: var(--bg-darker);
     }
 
+    .btn i.fa-spotify {
+      font-size: 1.1rem;
+    }
+
     .tag {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -269,54 +273,63 @@
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
     }
 
+    /* nuova card "Seguiteci" */
     .follow-card {
       background: var(--bg-card);
       border-radius: 14px;
-      padding: 1.8rem 1.6rem;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.8fr);
-      gap: 1.5rem;
+      padding: 2.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
     }
 
-    .follow-text h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.4rem;
+    .follow-heading {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
     }
 
-    .follow-text p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+    .follow-heading h2 {
+      font-size: 2.4rem;
+      letter-spacing: 0.12em;
+      font-weight: 500;
     }
 
-    .social-links {
+    .follow-line {
+      flex: 1;
+      height: 1px;
+      min-width: 30px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .social-icons {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: flex-start;
+      gap: 1rem;
+      justify-content: center;
     }
 
-    .social-links a {
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.6);
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: 999px;
-      background: #050f17;
-      color: #fdfdfd;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      background: transparent;
     }
 
-    .social-links a i {
-      font-size: 1rem;
-    }
-
-    .social-links a:hover {
-      background: #0d2435;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    .social-icon:hover {
+      transform: scale(1.15) translateY(-1px);
+      border-color: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
     }
 
     /* QUOTE SLIDER + NOVITA */
@@ -324,9 +337,10 @@
       background: var(--bg-dark);
     }
 
+    /* ora citazioni e novità in colonna, una sotto l'altra */
     .citazioni-novita-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 3rem;
     }
 
@@ -363,23 +377,25 @@
     }
 
     .quote-btn {
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      border: none;
-      background: #020c12;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.35);
       color: #fff;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 0.8rem;
-      transition: background 0.15s ease, transform 0.15s ease;
+      font-size: 0.9rem;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      z-index: 2;
     }
 
     .quote-btn:hover {
-      background: #071b28;
+      background: rgba(0, 0, 0, 0.7);
       transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
     }
 
     .quote-indicator {
@@ -545,6 +561,10 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
+    .spotify-btn i.fa-spotify {
+      font-size: 1.6rem;
+    }
+
     .spotify-btn:hover {
       transform: translateY(-2px) scale(1.03);
       box-shadow: 0 16px 34px rgba(0, 0, 0, 0.65);
@@ -579,9 +599,12 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
+    /* immagini merch: entrano tutte nel riquadro */
     .merch-card img {
+      width: 100%;
       height: 190px;
-      object-fit: cover;
+      object-fit: contain;
+      background: #020c12;
     }
 
     .merch-body {
@@ -905,11 +928,13 @@
     /* RESPONSIVE */
     @media (max-width: 880px) {
       .hero-content,
-      .follow-card,
-      .citazioni-novita-grid,
       .chi-grid,
       .contatti-inner {
         grid-template-columns: 1fr;
+      }
+
+      .follow-heading h2 {
+        font-size: 2rem;
       }
 
       .nav-links {
@@ -1023,31 +1048,27 @@
         </div>
 
         <div class="follow-card">
-          <div class="follow-text">
+          <div class="follow-heading">
+            <span class="follow-line"></span>
             <h2>Seguiteci</h2>
-            <p>
-              Restate aggiornati su nuove uscite, concerti e dietro le quinte del gruppo.
-              Un follow sui nostri social è il modo migliore per supportarci.
-            </p>
+            <span class="follow-line"></span>
           </div>
-          <div class="follow-links">
-            <div class="social-links">
-              <a href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-spotify"></i> Spotify
-              </a>
-              <a href="https://www.instagram.com/abp___official/" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-instagram"></i> Instagram
-              </a>
-              <a href="https://www.youtube.com/@abp___official" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-youtube"></i> YouTube
-              </a>
-              <a href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-tiktok"></i> TikTok
-              </a>
-              <a href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_v0v91yTGP2zTFeYWkx7pHtIIJ" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-amazon"></i> Amazon Music
-              </a>
-            </div>
+          <div class="social-icons">
+            <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-spotify"></i>
+            </a>
+            <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX/abbuopillonzi?marketplaceId=APJ6JRA9NG5V4&musicTerritory=IT&ref=dm_sh_v0v91yTGP2zTFeYWkx7pHtIIJ" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-amazon"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -1240,8 +1261,7 @@
         <div class="video-wrapper">
           <h3>Guarda l'ultimo video</h3>
           <div class="video-frame">
-            <!-- Puoi sostituire l'ID del video con un altro se pubblichi un nuovo singolo -->
-            <iframe src="https://www.youtube.com/embed/67VA-NPtY4w" title="ABP - Ultimo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/73rDhDsiiLo" title="ABP - Ultimo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -1294,7 +1314,6 @@
 
         <div class="contact-form-card">
           <h3>Scrivici Qui</h3>
-          <!-- mailto: semplice per GitHub Pages; puoi sostituire con un servizio esterno tipo Formspree -->
           <form action="mailto:abbuopillonzi@gmail.com" method="POST" enctype="text/plain">
             <div class="form-grid">
               <div class="form-field">
