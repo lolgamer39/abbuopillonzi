@@ -1065,9 +1065,6 @@
 
 .news-link { text-decoration:none; color:inherit; display:block; }
 
-
-.news-link { text-decoration:none; color:inherit; display:block; }
-
 </style>
 </head>
 <body>
@@ -1177,7 +1174,11 @@
             Ultime uscite, interviste e novità dal mondo Abbuopillonzi.
           </p>
 
-          <div id="newsList" class="news-list"></div>
+          <div class="news-list">
+            <a class="news-link" href="https://open.spotify.com/intl-it/album/6slRf45zXBVwspBf3XR3EP?si=dS-oU81CT1aTKwOsi67cTQ" target="_blank">
+<article class="news-item">
+              <div>
+                <div class="news-meta">Nuovo Album</div>
                 <h3 class="news-title">Uscita album "VIPS"</h3>
                 <p class="news-subtitle">
                   Esce finalmente il nostro primo album: VIPS (Vivo In Pessimo Stato).
@@ -1293,13 +1294,7 @@
       <div class="container">
         <h2 class="section-title">I nostri brani</h2>
 
-        <div class="tracks-grid">
-          <div class="track-card">
-            <a href="https://open.spotify.com/intl-it/track/5bsYYn6vbq3gZC4ZN7wZ3J?si=f50c3f13d59f476d" target="_blank" rel="noopener noreferrer">
-              <div class="track-disc" style="background-image: url('assets/images/maracuja.jpg');">
-                <div class="track-spotify">
-                  <i class="fa-brands fa-spotify"></i>
-                <img class="track-spotify-img" src="assets/images/spotifybar.png"></div>
+        <div id="tracksGrid" class="tracks-grid"></div>
               </div>
             </a>
             <div class="track-title">"Maracuja"</div>
@@ -1476,28 +1471,25 @@
   </script>
 
 <script>
-async function caricaNovita() {
-  const response = await fetch("assets/data/novita.json");
-  const novita = await response.json();
-  const lista = document.getElementById("newsList");
-  lista.innerHTML = "";
-
-  novita.forEach(item => {
-    lista.innerHTML += `
-      <a class="news-link" href="${item.link}" target="_blank">
-        <article class="news-item">
-          <div>
-            <div class="news-meta">Novità</div>
-            <h3 class="news-title">${item.titolo}</h3>
-            <p class="news-subtitle">${item.sottotitolo}</p>
-            <div class="news-date">${item.data}</div>
-          </div>
-          <div class="news-image" style="background-image:url('${item.immagine}')"></div>
-        </article>
-      </a>`;
+async function caricaBrani() {
+  const response = await fetch("assets/data/brani.json");
+  const brani = await response.json();
+  const grid = document.getElementById("tracksGrid");
+  grid.innerHTML = "";
+  brani.forEach(item => {
+    grid.innerHTML += `
+    <div class="track-card">
+      <a href="${item.spotify}" target="_blank" rel="noopener noreferrer">
+        <div class="track-disc" style="background-image:url('${item.immagine}'); position:relative;">
+          <img class="track-spotify-img" src="${item.badge}">
+        </div>
+      </a>
+      <div class="track-title">"${item.titolo}"</div>
+      <div class="track-artist">${item.artista}</div>
+    </div>`;
   });
 }
-caricaNovita();
+caricaBrani();
 </script>
 
 </body>
