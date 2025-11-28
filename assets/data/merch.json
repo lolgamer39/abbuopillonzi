@@ -1,1 +1,24 @@
+[
+  {
+    "nome": "T-Shirt VIPS",
+    "prezzo": "15€",
+    "descrizione": "Maglietta VIPS",
+    "immagine": "assets/images/merch1.jpg",
+    "link": "https://example.com"
+  },
+  {
+    "nome": "Hoodie VIPS",
+    "prezzo": "30€",
+    "descrizione": "Felpa VIPS",
+    "immagine": "assets/images/merch2.jpg",
+    "link": "https://example.com"
+  },
+  {
+    "nome": "CD VIPS",
+    "prezzo": "15€",
+    "descrizione": "CD VIPS",
+    "immagine": "assets/images/merch3.jpg",
+    "link": "https://example.com"
+  }
+]
 
