@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Merch — Abbuopillonzi</title>
+  <meta name="description" content="Scopri il merch ufficiale degli Abbuopillonzi: T-shirt, hoodies, CD e molto altro. Supporta il progetto ABP!">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <style>
+    :root {
+      --bg-dark: #03151f;
+      --bg-darker: #020c12;
+      --bg-card: #061c28;
+      --purple: #a373bd;
+      --purple-dark: #5b1a6b;
+      --accent: #33d17a;
+      --text-main: #f4f7fb;
+      --text-muted: #a7b8c3;
+    }
+
+    body {
+      font-family: Poppins, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: var(--purple);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .nav-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-title {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 3rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .merch-grid {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .merch-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .merch-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+    }
+
+    .merch-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .merch-body {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .merch-price {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .merch-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .merch-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      margin-top: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--purple-dark);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #4a145a;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      background: var(--bg-darker);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-left">
+    <div class="nav-logo"><img src="../assets/images/logo.png"></div>
+    <div class="nav-title">ABP</div>
+  </div>
+
+  <div class="nav-links">
+    <a href="../index.html#home">Home</a>
+    <a href="../index.html#merch">Torna al sito</a>
+  </div>
+</header>
+
+<main>
+  <h1>Merch Ufficiale ABP</h1>
+  <p>Qui trovi tutto il nostro merch, con descrizioni complete e immagini in alta qualità.</p>
+
+  <div id="merchGrid" class="merch-grid"></div>
+</main>
+
+<footer>
+  © <span id="year"></span> Abbuopillonzi — Tutti i diritti sono riservati.
+</footer>
+
+<script>
+// Imposta anno footer
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Carica prodotti dal JSON
+async function caricaMerch() {
+  try {
+    const res = await fetch("../assets/data/merch.json");
+    const merch = await res.json();
+    const grid = document.getElementById("merchGrid");
+
+    merch.forEach(item => {
+      grid.innerHTML += `
+        <div class="merch-card">
+          <img src="../${item.immagine}" alt="${item.nome}">
+          <div class="merch-body">
+            <div class="merch-price">${item.prezzo}</div>
+            <div class="merch-name">${item.nome}</div>
+            <div class="merch-desc">${item.descrizione}</div>
+            <a class="btn" href="${item.link}" target="_blank">Acquista Ora</a>
+          </div>
+        </div>`;
+    });
+
+  } catch (e) {
+    console.error("Errore nel caricamento del merch:", e);
+  }
+}
+
+caricaMerch();
+</script>
+
+</body>
+</html>
 
