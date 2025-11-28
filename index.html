@@ -1422,53 +1422,8 @@
   </footer>
 
   <!-- SCRIPT QUOTE SLIDER & ANNO FOOTER -->
-  <script>
-    // Citazioni dai testi
-    const quotes = [
-      {
-        text: '"Per i tuoi occhi neri, potrei anche prendere a testate il santo padre. Spaccare tutti i denti d\'oro a un cardinale."',
-        author: "– Occhi Neri"
-      },
-      {
-        text: '"E se ne va, lungo i viali a mendicare. Per qualche grammo, di felicità."',
-        author: "– Santa Terè"
-      },
-      {
-        text: '"Io voglio andarmene lontano dalla gente, confondere il mio niente in questa sporca ostilità."',
-        author: "– Lontano Dalla Gente"
-      }
-    ];
+  
 
-    const quoteText = document.getElementById("quoteText");
-    const quoteAuthor = document.getElementById("quoteAuthor");
-    const quoteIndicator = document.getElementById("quoteIndicator");
-    const prevBtn = document.getElementById("quotePrev");
-    const nextBtn = document.getElementById("quoteNext");
-
-    let currentQuote = 0;
-
-    function renderQuote() {
-      const q = quotes[currentQuote];
-      quoteText.textContent = q.text;
-      quoteAuthor.textContent = q.author;
-      quoteIndicator.textContent = (currentQuote + 1) + " / " + quotes.length;
-    }
-
-    prevBtn.addEventListener("click", () => {
-      currentQuote = (currentQuote - 1 + quotes.length) % quotes.length;
-      renderQuote();
-    });
-
-    nextBtn.addEventListener("click", () => {
-      currentQuote = (currentQuote + 1) % quotes.length;
-      renderQuote();
-    });
-
-    renderQuote();
-
-    // Anno nel footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 
 <script>
 async function caricaBrani() {
