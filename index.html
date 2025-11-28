@@ -1057,17 +1057,18 @@
 
   
 .track-spotify-img {
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  width:55px;
-  opacity:.9;
-  transition:.2s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  opacity: 0.95;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .track-disc:hover .track-spotify-img {
-  transform:scale(1.08);
-  opacity:1;
+  transform: translate(-50%, -50%) scale(1.08);
+  opacity: 1;
 }
 
 .social-icon{width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;transition:.2s;}
@@ -1076,6 +1077,66 @@
 
 
 .news-link { text-decoration:none; color:inherit; display:block; }
+
+
+.merch-slider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.merch-viewport {
+  flex: 1;
+  overflow: hidden;
+}
+
+.merch-track {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.merch-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #020c12;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+}
+
+.merch-arrow img {
+  width: 80%;
+  height: auto;
+  display: block;
+}
+
+.merch-arrow:hover:not(.disabled) {
+  transform: scale(1.07);
+  filter: brightness(1.2);
+}
+
+.merch-arrow.disabled {
+  opacity: 0.35;
+  filter: grayscale(100%);
+  cursor: default;
+}
+
+@media (max-width: 960px) {
+  .merch-track {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .merch-slider {
+    gap: 0.6rem;
+  }
+}
 
 </style>
 </head>
@@ -1186,11 +1247,7 @@
             Ultime uscite, interviste e novità dal mondo Abbuopillonzi.
           </p>
 
-          <div class="news-list">
-            <a class="news-link" href="https://open.spotify.com/intl-it/album/6slRf45zXBVwspBf3XR3EP?si=dS-oU81CT1aTKwOsi67cTQ" target="_blank">
-<article class="news-item">
-              <div>
-                <div class="news-meta">Nuovo Album</div>
+          <div id="newsList" class="news-list"></div>
                 <h3 class="news-title">Uscita album "VIPS"</h3>
                 <p class="news-subtitle">
                   Esce finalmente il nostro primo album: VIPS (Vivo In Pessimo Stato).
@@ -1261,36 +1318,12 @@
       <div class="container">
         <h2 class="section-title">Merch ABP</h2>
 
-        <div class="merch-grid">
-          <article class="merch-card">
-            <img src="assets/images/merch1.jpg" alt="T-Shirt VIPS">
-            <div class="merch-body">
-              <div class="merch-price">15€</div>
-              <div class="merch-name">T-Shirt VIPS</div>
-              <div class="merch-desc">Maglietta VIPS, con logo ABP.</div>
-              <a href="#" class="btn">Acquista Ora</a>
-            </div>
-          </article>
-
-          <article class="merch-card">
-            <img src="assets/images/merch2.jpg" alt="Hoodies VIPS">
-            <div class="merch-body">
-              <div class="merch-price">30€</div>
-              <div class="merch-name">Hoodies VIPS</div>
-              <div class="merch-desc">Felpe VIPS, con logo ABP.</div>
-              <a href="#" class="btn">Acquista Ora</a>
-            </div>
-          </article>
-
-          <article class="merch-card">
-            <img src="assets/images/merch3.jpg" alt="CD VIPS">
-            <div class="merch-body">
-              <div class="merch-price">10€</div>
-              <div class="merch-name">CD VIPS</div>
-              <div class="merch-desc">Il CD del nostro primo album VIPS.</div>
-              <a href="#" class="btn">Acquista Ora</a>
-            </div>
-          </article>
+        <div class="merch-slider">
+          <button class="merch-arrow merch-prev"><img src="assets/images/frecciasx.png" alt="Precedente"></button>
+          <div class="merch-viewport">
+            <div id="merchTrack" class="merch-track"></div>
+          </div>
+          <button class="merch-arrow merch-next"><img src="assets/images/frecciadx.png" alt="Successivo"></button>
         </div>
 
         <!-- Galleria sotto il merch -->
@@ -1311,8 +1344,7 @@
 <div class="video-wrapper">
           <h3>Guarda l'ultimo video</h3>
           <div class="video-frame">
-            <!-- Puoi sostituire l'ID del video con un altro se pubblichi un nuovo singolo -->
-            <iframe src="https://www.youtube.com/embed/73rDhDsiiLo" title="ABP - Ultimo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div id="videoContainer"></div>
           </div>
         </div>
       </div>
@@ -1409,14 +1441,17 @@
 
 
 
+<!-- SCRIPTS JSON DINAMICI -->
 <script>
 async function caricaBrani() {
-  const response = await fetch("assets/data/brani.json");
-  const brani = await response.json();
-  const grid = document.getElementById("tracksGrid");
-  grid.innerHTML = "";
-  brani.forEach(item => {
-    grid.innerHTML += `
+  const grid = document.getElementById('tracksGrid');
+  if (!grid) return;
+  try {
+    const response = await fetch('assets/data/brani.json');
+    const brani = await response.json();
+    grid.innerHTML = '';
+    brani.forEach(item => {
+      grid.innerHTML += `
     <div class="track-card">
       <a href="${item.spotify}" target="_blank" rel="noopener noreferrer">
         <div class="track-disc" style="background-image:url('${item.immagine}'); position:relative;">
@@ -1426,10 +1461,151 @@ async function caricaBrani() {
       <div class="track-title">"${item.titolo}"</div>
       <div class="track-artist">${item.artista}</div>
     </div>`;
-  });
+    });
+  } catch (e) { console.error('Errore caricamento brani', e); }
 }
-caricaBrani();
-</script>
 
+let frasiData = [];
+let fraseIndex = 0;
+function aggiornaFrase() {
+  const textEl = document.getElementById('quoteText');
+  const authorEl = document.getElementById('quoteAuthor');
+  const indEl = document.getElementById('quoteIndicator');
+  if (!textEl || !authorEl || !indEl || !frasiData.length) return;
+  const f = frasiData[fraseIndex];
+  textEl.textContent = '"' + f.testo + '"';
+  authorEl.textContent = f.titolo ? ('- ' + f.titolo) : '';
+  indEl.textContent = (fraseIndex + 1) + ' / ' + frasiData.length;
+}
+async function caricaFrasi() {
+  try {
+    const res = await fetch('assets/data/frasi.json');
+    frasiData = await res.json();
+    fraseIndex = 0;
+    aggiornaFrase();
+    const prev = document.getElementById('quotePrev');
+    const next = document.getElementById('quoteNext');
+    if (prev) prev.onclick = () => { if (frasiData.length) { fraseIndex = (fraseIndex - 1 + frasiData.length) % frasiData.length; aggiornaFrase(); } };
+    if (next) next.onclick = () => { if (frasiData.length) { fraseIndex = (fraseIndex + 1) % frasiData.length; aggiornaFrase(); } };
+  } catch (e) { console.error('Errore caricamento frasi', e); }
+}
+
+async function caricaNovita() {
+  const list = document.getElementById('newsList');
+  if (!list) return;
+  try {
+    const res = await fetch('assets/data/novita.json');
+    const novita = await res.json();
+    list.innerHTML = '';
+    novita.forEach(item => {
+      list.innerHTML += `
+      <a class="news-link" href="${item.link}" target="_blank">
+        <article class="news-item">
+          <div>
+            <div class="news-meta">Novità</div>
+            <h3 class="news-title">${item.titolo}</h3>
+            <p class="news-subtitle">${item.sottotitolo}</p>
+            <div class="news-date">${item.data}</div>
+          </div>
+          <div class="news-image" style="background-image:url('${item.immagine}')"></div>
+        </article>
+      </a>`;
+    });
+  } catch (e) { console.error('Errore caricamento novità', e); }
+}
+
+async function caricaVideo() {
+  const container = document.getElementById('videoContainer');
+  if (!container) return;
+  try {
+    const res = await fetch('assets/data/video.json');
+    const data = await res.json();
+    const url = data.youtube || '';
+    const match = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]+)/);
+    const id = match ? match[1] : '73rDhDsiiLo';
+    container.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="ABP - Ultimo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  } catch (e) { console.error('Errore caricamento video', e); }
+}
+
+let merchData = [];
+let merchIndex = 0;
+let merchPerView = 3;
+function calcolaMerchPerView() {
+  const w = window.innerWidth || 1024;
+  if (w < 640) return 1;
+  if (w < 960) return 2;
+  return 3;
+}
+function aggiornaMerchVisibilita() {
+  const track = document.getElementById('merchTrack');
+  if (!track) return;
+  const cards = Array.from(track.querySelectorAll('.merch-card'));
+  if (!cards.length) return;
+  merchPerView = calcolaMerchPerView();
+  const totale = cards.length;
+  merchIndex = Math.min(merchIndex, Math.max(0, totale - merchPerView));
+  cards.forEach((card, idx) => {
+    card.style.display = (idx >= merchIndex && idx < merchIndex + merchPerView) ? 'block' : 'none';
+  });
+  const prev = document.querySelector('.merch-prev');
+  const next = document.querySelector('.merch-next');
+  const canSlide = totale > merchPerView;
+  if (prev && next) {
+    prev.classList.toggle('disabled', !canSlide);
+    next.classList.toggle('disabled', !canSlide);
+  }
+}
+function slideMerch(delta) {
+  const track = document.getElementById('merchTrack');
+  if (!track) return;
+  const cards = track.querySelectorAll('.merch-card');
+  const totale = cards.length;
+  if (totale <= merchPerView) return;
+  merchIndex += delta;
+  if (merchIndex < 0) merchIndex = 0;
+  if (merchIndex > totale - merchPerView) merchIndex = totale - merchPerView;
+  aggiornaMerchVisibilita();
+}
+async function caricaMerch() {
+  const track = document.getElementById('merchTrack');
+  if (!track) return;
+  try {
+    const res = await fetch('assets/data/merch.json');
+    merchData = await res.json();
+    track.innerHTML = '';
+    merchData.forEach(item => {
+      track.innerHTML += `
+      <article class="merch-card">
+        <img src="${item.immagine}" alt="${item.nome}">
+        <div class="merch-body">
+          <div class="merch-price">${item.prezzo}</div>
+          <div class="merch-name">${item.nome}</div>
+          <div class="merch-desc">${item.descrizione}</div>
+          <a href="${item.link}" class="btn" target="_blank" rel="noopener noreferrer">Acquista Ora</a>
+        </div>
+      </article>`;
+    });
+    aggiornaMerchVisibilita();
+    const prev = document.querySelector('.merch-prev');
+    const next = document.querySelector('.merch-next');
+    if (prev) prev.onclick = () => slideMerch(-1);
+    if (next) next.onclick = () => slideMerch(1);
+    window.addEventListener('resize', aggiornaMerchVisibilita);
+  } catch (e) { console.error('Errore caricamento merch', e); }
+}
+
+function initABP() {
+  caricaBrani();
+  caricaFrasi();
+  caricaNovita();
+  caricaVideo();
+  caricaMerch();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initABP);
+} else {
+  initABP();
+}
+</script>
 </body>
 </html>
