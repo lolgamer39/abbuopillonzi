@@ -1181,6 +1181,87 @@
   }
 }
 
+
+/* 🔥 FIX MOBILE AVANZATO (VERSIONE B) — Tutto centrato, zero overflow, layout ottimizzato */
+@media (max-width: 600px) {
+
+  /* Eliminazione scroll orizzontale */
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* HEADER completamente centrato */
+  header, .nav, .nav-left, .nav-links {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .nav-left {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Tutte le griglie diventano una colonna */
+  .citazioni-novita-grid,
+  .chi-grid,
+  .contatti-inner,
+  .spotify-hero-inner {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+
+  /* Centra contenuti principali */
+  section, .container, .content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    text-align: center !important;
+  }
+
+  /* Galleria sotto merch in colonna */
+  .gallery-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.2rem !important;
+  }
+
+  .gallery-row img {
+    width: 85% !important;
+  }
+
+  /* Fix immagini varie */
+  img, video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix slider citazioni */
+  .quote-btn {
+    top: 90% !important;
+  }
+
+  .quote-btn img {
+    width: 26px !important;
+  }
+
+  .quote-text {
+    padding-bottom: 42px !important;
+  }
+}
+
 </style>
 </head>
 <body>
