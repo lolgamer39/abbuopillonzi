@@ -1,21 +1,21 @@
 [
   {
     "nome": "T-Shirt VIPS",
-    "prezzo": "15€",
+    "prezzo": "",
     "descrizione": "Maglietta VIPS, con logo ABP.",
     "immagine": "assets/images/merch1.jpg",
     "link": "https://abbuopillonzi.com/merch"
   },
   {
     "nome": "Hoodies VIPS",
-    "prezzo": "30€",
+    "prezzo": "",
     "descrizione": "Felpe VIPS, con logo ABP.",
     "immagine": "assets/images/merch2.jpg",
     "link": "https://abbuopillonzi.com/merch"
   },
   {
     "nome": "CD VIPS",
-    "prezzo": "10€",
+    "prezzo": "",
     "descrizione": "Il CD del nostro primo album VIPS.",
     "immagine": "assets/images/merch3.jpg",
     "link": "https://abbuopillonzi.com/merch"
