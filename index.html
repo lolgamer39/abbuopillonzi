@@ -209,7 +209,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 3rem;
-      align-items: start; /* Allineamento in alto per gestire il video sotto */
+      align-items: start;
     }
 
     .hero-title {
@@ -254,7 +254,7 @@
       padding: 1.2rem;
       background: radial-gradient(circle at 30% 0%, #ffffff 0, #fffb 40%, #ffffff00 60%),
         radial-gradient(circle at 80% 120%, rgba(51, 209, 122, 0.2), transparent 60%);
-      align-self: center; /* Centra il logo verticalmente nella sua colonna */
+      align-self: center;
     }
 
     .hero-logo {
@@ -365,7 +365,7 @@
 
     .citazioni-novita-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Una sotto l'altra come da override */
+      grid-template-columns: 1fr;
       gap: 3rem;
     }
 
@@ -873,15 +873,8 @@ async function caricaBrani() {
   } catch (e) { console.error('Errore caricamento brani', e); }
 }
 
-// 2. GESTIONE CITAZIONI (FIXATO: DATI INSERITI DIRETTAMENTE QUI)
-// Modifica qui sotto le tue citazioni se necessario
-let frasiData = [
-  { "testo": "La musica è l'unico modo che conosciamo per dire cose che altrimenti non avrebbero senso.", "titolo": "ABP" },
-  { "testo": "Non importa dove andiamo, l'importante è che ci sia un palco e qualcuno pronto ad ascoltare.", "titolo": "Francesco" },
-  { "testo": "Ogni nota è un pezzo di noi che lasciamo andare per sempre.", "titolo": "ABP" },
-  { "testo": "Firenze ci ha cresciuti, la musica ci ha salvati.", "titolo": "Lorenzo" }
-];
-
+// 2. GESTIONE CITAZIONI (JSON ESTERNO RIPRISTINATO)
+let frasiData = [];
 let fraseIndex = 0;
 
 function aggiornaFrase() {
@@ -895,14 +888,18 @@ function aggiornaFrase() {
   indEl.textContent = (fraseIndex + 1) + ' / ' + frasiData.length;
 }
 
-// Funzione modificata: non carica più JSON esterno per evitare errori
-function caricaFrasi() {
+// Ripristinata la chiamata fetch al file esterno
+async function caricaFrasi() {
+  try {
+    const res = await fetch('assets/data/frasi.json');
+    frasiData = await res.json();
     fraseIndex = 0;
     aggiornaFrase();
     const prev = document.getElementById('quotePrev');
     const next = document.getElementById('quoteNext');
     if (prev) prev.onclick = () => { if (frasiData.length) { fraseIndex = (fraseIndex - 1 + frasiData.length) % frasiData.length; aggiornaFrase(); } };
     if (next) next.onclick = () => { if (frasiData.length) { fraseIndex = (fraseIndex + 1) % frasiData.length; aggiornaFrase(); } };
+  } catch (e) { console.error('Errore caricamento frasi', e); }
 }
 
 // 3. CARICAMENTO NOVITA
@@ -930,7 +927,7 @@ async function caricaNovita() {
   } catch (e) { console.error('Errore caricamento novità', e); }
 }
 
-// 4. CARICAMENTO VIDEO (FIXATO: ID SPECIFICO)
+// 4. CARICAMENTO VIDEO (ID SPECIFICO)
 function caricaVideo() {
   const container = document.getElementById('videoContainer');
   if (!container) return;
@@ -1012,7 +1009,7 @@ async function caricaMerch() {
 // INIZIALIZZAZIONE
 function initABP() {
   caricaBrani();
-  caricaFrasi(); // Usa i dati interni ora
+  caricaFrasi(); 
   caricaNovita();
   caricaVideo();
   caricaMerch();
