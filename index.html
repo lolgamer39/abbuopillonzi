@@ -4,34 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 🔥 SEO BASE -->
   <title>Abbuopillonzi — Official</title>
   <meta name="description" content="Siamo un gruppo di 5 ragazzi di Firenze. Musica cantautorale moderna, storie ed emozioni. Ascolta i nostri brani e scopri il progetto ABP.">
 
-  <!-- 🔥 FAVICON -->
   <link rel="icon" href="assets/images/favicon.png" type="image/png"> 
 
-  <!-- 🔥 OPEN GRAPH (Facebook, Instagram, WhatsApp, Messenger) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Abbuopillonzi — ABP — Official">
   <meta property="og:description" content="Siamo un gruppo di 5 ragazzi di Firenze. Musica cantautorale moderna, storie ed emozioni.">
   <meta property="og:image" content="https://abbuopillonzi.com/assets/images/foto4.webp">
   <meta property="og:url" content="https://abbuopillonzi.com">
   
-
-  <!-- 🔥 PREVENT CACHE ISSUE (Google update più veloce) -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-<link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <meta charset="UTF-8" />
-  <title>Abbuopillonzi — ABP — Official</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome per le icone social -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-olVvZQvXrWIw6QY7n1fWgkldS3r3pW8qgWg7PZ2hMSI7X4DYTpaRzdX4xv1xS/Z5rW2W6IwF0xTv4mVvQxYdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -57,8 +46,7 @@
     }
 
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-main);
       line-height: 1.6;
@@ -150,7 +138,7 @@
 
     /* UTILITIES */
     main {
-      margin-top: 70px; /* spazio sotto l'header fisso */
+      margin-top: 70px;
     }
 
     section {
@@ -221,7 +209,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 3rem;
-      align-items: center;
+      align-items: start; /* Allineamento in alto per gestire il video sotto */
     }
 
     .hero-title {
@@ -244,6 +232,21 @@
       align-items: center;
     }
 
+    /* NUOVO STILE PER IL VIDEO IN HERO */
+    .hero-video-wrapper {
+        margin-top: 2.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+    .hero-video-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+    }
+
     .hero-logo-wrap {
       width: min(260px, 65vw);
       margin-left: auto;
@@ -251,6 +254,7 @@
       padding: 1.2rem;
       background: radial-gradient(circle at 30% 0%, #ffffff 0, #fffb 40%, #ffffff00 60%),
         radial-gradient(circle at 80% 120%, rgba(51, 209, 122, 0.2), transparent 60%);
+      align-self: center; /* Centra il logo verticalmente nella sua colonna */
     }
 
     .hero-logo {
@@ -265,10 +269,25 @@
       border-radius: 50%;
     }
 
-    /* SEGUITECI + FOTO */
-    #social {
-      background: var(--bg-darker);
+    /* VIDEO GENERICO */
+    .video-frame {
+      position: relative;
+      padding-top: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
     }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* SEGUITECI + FOTO */
+    #social { background: var(--bg-darker); }
 
     .photos-row {
       display: grid;
@@ -302,705 +321,9 @@
       align-items: center;
     }
 
-    .follow-text h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0.4rem;
-    }
+    .follow-text h2 { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .follow-text p { color: var(--text-muted); font-size: 0.95rem; }
 
-    .follow-text p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: flex-start;
-    }
-
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.9rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: 999px;
-      background: #050f17;
-      color: #fdfdfd;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .social-links a i {
-      font-size: 1rem;
-    }
-
-    .social-links a:hover {
-      background: #0d2435;
-      transform: translateY(-1px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
-    }
-
-    /* QUOTE SLIDER + NOVITA */
-    #citazioni-novita {
-      background: var(--bg-dark);
-    }
-
-    .citazioni-novita-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-      gap: 3rem;
-    }
-
-    .quote-slider {
-      background: var(--bg-card);
-      border-radius: 14px;
-      padding: 1.8rem 1.6rem 1.4rem;
-      position: relative;
-      overflow: hidden;
-      min-height: 170px;
-    }
-
-    .quote-icon {
-      font-size: 2rem;
-      margin-bottom: 0.4rem;
-      color: var(--accent);
-    }
-
-    .quote-text {
-      font-size: 0.98rem;
-    }
-
-    .quote-author {
-      margin-top: 0.6rem;
-      font-weight: 500;
-    }
-
-    .quote-controls {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .quote-btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: none;
-      background: #020c12;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.8rem;
-      transition: background 0.15s ease, transform 0.15s ease;
-    }
-
-    .quote-btn:hover {
-      background: #071b28;
-      transform: translateY(-1px);
-    }
-
-    .quote-indicator {
-      position: absolute;
-      bottom: 1.1rem;
-      right: 1.4rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .novita-section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .novita-section > p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .news-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .news-item {
-      padding: 1.4rem 1.4rem 1.35rem;
-      border-radius: 12px;
-      background: var(--bg-card);
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-      gap: 1.3rem;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .news-item:hover {
-      transform: translateY(-2px);
-      background: #071d2a;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
-    }
-
-    .news-meta {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-
-    .news-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .news-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .news-date {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .news-image {
-      border-radius: 10px;
-      background-size: cover;
-      background-position: center;
-      height: 120px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .news-item:hover .news-image {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* SPOTIFY HERO */
-    #spotify-hero {
-      background: var(--purple);
-      padding: 5rem 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #spotify-hero::before,
-    #spotify-hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 90px;
-      background: #f5f1ff;
-      opacity: 0.85;
-    }
-
-    #spotify-hero::before {
-      left: -45px;
-      border-radius: 50% / 100%;
-    }
-
-    #spotify-hero::after {
-      right: -45px;
-      border-radius: 50% / 100%;
-    }
-
-    .spotify-hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: #111;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .spotify-hero-bg {
-      background-image: linear-gradient(
-          rgba(160, 115, 189, 0.65),
-          rgba(160, 115, 189, 0.85)
-        ),
-        url("assets/images/foto4.webp");
-      background-size: cover;
-      background-position: center;
-      padding: 4.5rem 1.5rem;
-    }
-
-    .spotify-hero-tag {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 0.4rem;
-    }
-
-    .spotify-hero-title {
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-    }
-
-    .spotify-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #f3c1d2;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.7rem;
-      color: #111;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-
-    .spotify-btn:hover {
-      transform: translateY(-2px) scale(1.03);
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.65);
-      background: #ffd6e6;
-    }
-
-    .spotify-hero-note {
-      font-size: 0.9rem;
-      margin-top: 0.75rem;
-      opacity: 0.9;
-    }
-
-    /* MERCH + GALLERIA */
-    #merch {
-      background: var(--bg-darker);
-    }
-
-    .merch-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.8rem;
-      margin-top: 1.8rem;
-    }
-
-    .merch-card {
-      background: var(--bg-card);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .merch-card img {
-      height: 190px;
-      object-fit: cover;
-    }
-
-    .merch-body {
-      padding: 1.2rem 1.2rem 1.4rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .merch-price {
-      font-weight: 600;
-    }
-
-    .merch-name {
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .merch-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .merch-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-    }
-
-    .merch-body .btn {
-      margin-top: 0.8rem;
-      align-self: flex-start;
-      font-size: 0.85rem;
-      padding-inline: 1.1rem;
-    }
-
-    /* Ingrandisce le immagini sotto la sezione merch */
-.gallery-row {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-.gallery-row img {
-  width: 250px;   /* AUMENTA DA QUI LA DIMENSIONE */
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* Responsive per telefono */
-@media (max-width: 600px) {
-  .gallery-row img {
-    width: 90%;    /* più grandi anche su mobile */
-  }
-}
-
-
-    .gallery-row img:hover {
-      filter: grayscale(0%);
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    /* ALBUM / BRANI PRINCIPALI + VIDEO */
-    #album {
-      background: var(--bg-dark);
-    }
-
-    .tracks-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2.5rem;
-      justify-items: center;
-      margin-top: 1.5rem;
-    }
-
-    .track-card {
-      text-align: center;
-    }
-
-    .track-disc {
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      margin: 0 auto 0.9rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
-      overflow: hidden;
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .track-disc::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, transparent 55%, rgba(0, 0, 0, 0.4));
-      opacity: 0;
-      transition: opacity 0.22s ease;
-    }
-
-    .track-card a:hover .track-disc {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.75);
-    }
-
-    .track-card a:hover .track-disc::after {
-      opacity: 1;
-    }
-
-    .track-spotify {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-      font-size: 1.4rem;
-    }
-
-    .track-title {
-      font-weight: 600;
-    }
-
-    .track-artist {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .video-wrapper {
-      margin-top: 3rem;
-    }
-
-    .video-wrapper h3 {
-      margin-bottom: 0.8rem;
-      font-size: 1.35rem;
-    }
-
-    .video-frame {
-      position: relative;
-      padding-top: 56.25%;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
-    }
-
-    .video-frame iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* CHI SIAMO */
-    #chi {
-      background: var(--bg-darker);
-    }
-
-    .chi-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .chi-text h3 {
-      margin-bottom: 0.3rem;
-    }
-
-    .chi-text p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .chi-photo-wrap {
-      max-width: 360px;
-      justify-self: center;
-    }
-
-    .chi-photo-circle {
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 5px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-    }
-
-    .chi-photo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* CONTATTI */
-    #contatti {
-      background: var(--purple);
-      color: #0d0611;
-    }
-
-    .contatti-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
-      gap: 2.5rem;
-    }
-
-    .contatti-text h2 {
-      margin-bottom: 0.5rem;
-      font-size: 1.8rem;
-    }
-
-    .contatti-text p {
-      font-size: 0.95rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .contatti-details {
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    .contatti-details span {
-      font-weight: 600;
-    }
-
-    .contact-form-card {
-      background: rgba(3, 21, 31, 0.96);
-      border-radius: 14px;
-      padding: 1.7rem 1.6rem;
-      color: var(--text-main);
-      box-shadow: 0 15px 36px rgba(0, 0, 0, 0.6);
-    }
-
-    .contact-form-card h3 {
-      margin-bottom: 1.2rem;
-      font-size: 1.4rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.9rem;
-    }
-
-    .form-field label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 0.25rem;
-    }
-
-    .form-field input,
-    .form-field textarea {
-      width: 100%;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #020c12;
-      padding: 0.6rem 0.75rem;
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 0.9rem;
-      resize: vertical;
-      min-height: 42px;
-      outline: none;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .form-field textarea {
-      min-height: 100px;
-    }
-
-    .form-field input:focus,
-    .form-field textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(51, 209, 122, 0.4);
-    }
-
-    .contact-form-card .btn {
-      margin-top: 1rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--bg-darker);
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    footer .social-footer {
-      margin-top: 0.6rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.75rem;
-    }
-
-    footer .social-footer a {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    footer .social-footer a:hover {
-      background: var(--purple-dark);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 880px) {
-      .hero-content,
-      .follow-card,
-      .citazioni-novita-grid,
-      .chi-grid,
-      .contatti-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        gap: 0.9rem;
-        font-size: 0.8rem;
-      }
-
-      .news-item {
-        grid-template-columns: 1fr;
-      }
-
-      .news-image {
-        height: 150px;
-      }
-
-      #spotify-hero::before,
-      #spotify-hero::after {
-        display: none;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .photos-row,
-      .gallery-row,
-      .merch-grid,
-      .tracks-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding-inline: 1rem;
-      }
-
-      .hero-content {
-        gap: 2rem;
-      }
-
-      .hero-logo-wrap {
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .nav {
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-  
-    /* Override: citazioni + novità una sotto l'altra */
-    .citazioni-novita-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-
-    /* Social icons PNG */
     .social-icons {
       display: flex;
       flex-wrap: wrap;
@@ -1019,12 +342,13 @@
       justify-content: center;
       background: transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      overflow: hidden;
     }
 
     .social-icon img {
-      width: 60%;
-      height: auto;
-      display: block;
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
       transition: transform 0.2s ease;
     }
 
@@ -1033,21 +357,39 @@
       border-color: var(--accent);
       box-shadow: 0 12px 32px rgba(0,0,0,0.7);
     }
+    
+    .social-icon:hover img { transform: scale(1.05); }
 
-    .social-icon:hover img {
-      transform: scale(1.05);
+    /* QUOTE SLIDER + NOVITA */
+    #citazioni-novita { background: var(--bg-dark); }
+
+    .citazioni-novita-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* Una sotto l'altra come da override */
+      gap: 3rem;
     }
 
-    /* Merch immagini piene senza bordi extra */
-    .merch-card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      background: transparent;
-      display: block;
+    .quote-slider {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 1.8rem 1.6rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 170px;
     }
 
-    /* Frecce slider con immagini */
+    .quote-icon { font-size: 2rem; margin-bottom: 0.4rem; color: var(--accent); }
+    .quote-text { font-size: 0.98rem; margin-bottom: 1.5rem; }
+    .quote-author { margin-top: 0.6rem; font-weight: 500; }
+
+    .quote-controls {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.35rem;
+    }
+
     .quote-btn {
       width: 40px;
       height: 40px;
@@ -1061,211 +403,223 @@
       justify-content: center;
       transition: transform 0.2s ease, filter 0.2s ease;
     }
+    .quote-btn img { width: 100%; height: auto; display: block; }
+    .quote-btn:hover { transform: scale(1.1); filter: brightness(1.2); }
 
-    .quote-btn img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .quote-indicator {
+      position: absolute;
+      bottom: 1.1rem;
+      right: 1.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
 
-    .quote-btn:hover {
-      transform: scale(1.1);
-      filter: brightness(1.2);
+    .novita-section h2 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .novita-section > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.8rem; }
+
+    .news-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .news-link { text-decoration:none; color:inherit; display:block; }
+
+    .news-item {
+      padding: 1.4rem;
+      border-radius: 12px;
+      background: var(--bg-card);
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 1.3rem;
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .news-item:hover {
+      transform: translateY(-2px);
+      background: #071d2a;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
     }
 
-    /* Visibilità icone Spotify */
-    .track-spotify i {
-      font-size: 1.5rem;
-      color: var(--accent);
+    .news-meta { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.25rem; }
+    .news-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .news-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+    .news-date { font-size: 0.8rem; color: var(--text-muted); }
+
+    .news-image {
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+      height: 120px;
     }
 
-    .spotify-btn i {
-      font-size: 1.6rem;
+    /* SPOTIFY HERO */
+    #spotify-hero {
+      background: var(--purple);
+      padding: 5rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spotify-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
       color: #111;
+      border-radius: 20px;
+      overflow: hidden;
     }
 
-  
-.track-spotify-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  opacity: 0.95;
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
+    .spotify-hero-bg {
+      background-image: linear-gradient(rgba(160, 115, 189, 0.65), rgba(160, 115, 189, 0.85)), url("assets/images/foto4.webp");
+      background-size: cover;
+      background-position: center;
+      padding: 4.5rem 1.5rem;
+    }
 
-.track-disc:hover .track-spotify-img {
-  transform: translate(-50%, -50%) scale(1.08);
-  opacity: 1;
-}
+    .spotify-hero-tag { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 0.4rem; }
+    .spotify-hero-title { font-size: clamp(2.2rem, 4vw, 3rem); margin-bottom: 1.2rem; font-weight: 700; }
 
-.social-icon{width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;transition:.2s;}
-.social-icon img{width:70%;height:70%;object-fit:contain;}
-.merch-card img{width:100%;height:auto;object-fit:cover;}
+    .spotify-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #f3c1d2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .spotify-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.65);
+      background: #ffd6e6;
+    }
 
+    .spotify-hero-note { font-size: 0.9rem; margin-top: 0.75rem; opacity: 0.9; }
 
-.news-link { text-decoration:none; color:inherit; display:block; }
+    /* MERCH + GALLERIA */
+    #merch { background: var(--bg-darker); }
 
+    .merch-slider { display: flex; align-items: center; gap: 1rem; margin-top: 1.8rem; }
+    .merch-viewport { flex: 1; overflow: hidden; }
+    .merch-track { display: flex; gap: 1.5rem; }
 
-.merch-slider {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.8rem;
-}
+    .merch-arrow {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: #020c12;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+    }
+    .merch-arrow img { width: 80%; height: auto; display: block; }
+    .merch-arrow:hover:not(.disabled) { transform: scale(1.07); filter: brightness(1.2); }
+    .merch-arrow.disabled { opacity: 0.35; filter: grayscale(100%); cursor: default; }
 
-.merch-viewport {
-  flex: 1;
-  overflow: hidden;
-}
+    .merch-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .merch-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7); }
+    .merch-card img { width: 100%; height: auto; object-fit: cover; }
 
-.merch-track {
-  display: flex;
-  gap: 1.5rem;
-}
+    .merch-body {
+      padding: 1.2rem 1.2rem 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .merch-price { font-weight: 600; }
+    .merch-name { font-size: 1.05rem; font-weight: 600; }
+    .merch-desc { font-size: 0.9rem; color: var(--text-muted); }
+    .merch-body .btn { margin-top: 0.8rem; align-self: flex-start; font-size: 0.85rem; padding-inline: 1.1rem; }
 
-.merch-arrow {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: none;
-  background: #020c12;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
-}
+    .gallery-row { display: flex; gap: 20px; justify-content: center; margin-top: 3rem; }
+    .gallery-row img { width: 250px; height: auto; border-radius: 12px; object-fit: cover; transition: all 0.2s; }
+    .gallery-row img:hover { filter: grayscale(0%); transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6); }
 
-.merch-arrow img {
-  width: 80%;
-  height: auto;
-  display: block;
-}
+    /* ALBUM */
+    #album { background: var(--bg-dark); }
+    .tracks-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; justify-items: center; margin-top: 1.5rem; }
+    
+    .track-card { text-align: center; }
+    .track-disc {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      margin: 0 auto 0.9rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .track-disc::after {
+      content: ""; position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 55%, rgba(0, 0, 0, 0.4)); opacity: 0; transition: opacity 0.22s ease;
+    }
+    .track-card a:hover .track-disc { transform: translateY(-4px); box-shadow: 0 22px 46px rgba(0, 0, 0, 0.75); }
+    .track-card a:hover .track-disc::after { opacity: 1; }
 
-.merch-arrow:hover:not(.disabled) {
-  transform: scale(1.07);
-  filter: brightness(1.2);
-}
+    .track-spotify-img {
+      position: absolute; top: 50%; left: 50%; width: 60px; opacity: 0.95; transform: translate(-50%, -50%); transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .track-disc:hover .track-spotify-img { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
 
-.merch-arrow.disabled {
-  opacity: 0.35;
-  filter: grayscale(100%);
-  cursor: default;
-}
+    .track-title { font-weight: 600; }
+    .track-artist { font-size: 0.85rem; color: var(--text-muted); }
 
-@media (max-width: 960px) {
-  .merch-track {
-    gap: 1.2rem;
-  }
-}
+    /* CHI SIAMO */
+    #chi { background: var(--bg-darker); }
+    .chi-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr); gap: 3rem; align-items: center; }
+    .chi-text p { color: var(--text-muted); font-size: 0.95rem; }
+    .chi-photo-wrap { max-width: 360px; justify-self: center; }
+    .chi-photo-circle { aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 5px solid rgba(255, 255, 255, 0.06); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7); }
 
-@media (max-width: 640px) {
-  .merch-slider {
-    gap: 0.6rem;
-  }
-}
+    /* CONTATTI */
+    #contatti { background: var(--purple); color: #0d0611; }
+    .contatti-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr); gap: 2.5rem; }
+    .contact-form-card { background: rgba(3, 21, 31, 0.96); border-radius: 14px; padding: 1.7rem 1.6rem; color: var(--text-main); box-shadow: 0 15px 36px rgba(0, 0, 0, 0.6); }
+    .form-grid { display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+    .form-field input, .form-field textarea {
+      width: 100%; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1); background: #020c12; padding: 0.6rem 0.75rem; color: var(--text-main); font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(51, 209, 122, 0.4); }
 
+    /* FOOTER */
+    footer { background: var(--bg-darker); padding: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
 
-/* Fix frecce slider su schermi piccoli */
-@media (max-width: 600px) {
-  .quote-btn {
-    top: 80% !important;
-  }
-  .quote-btn img {
-    width: 24px !important;
-  }
-  .quote-text {
-    padding-bottom: 40px !important;
-  }
-}
-
-
-/* 🔥 FIX MOBILE AVANZATO (VERSIONE B) — Tutto centrato, zero overflow, layout ottimizzato */
-@media (max-width: 600px) {
-
-  /* Eliminazione scroll orizzontale */
-  html, body {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* HEADER completamente centrato */
-  header, .nav, .nav-left, .nav-links {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    display: flex !important;
-    justify-content: center !important;
-    text-align: center !important;
-    flex-wrap: wrap !important;
-  }
-
-  .nav-left {
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  /* Tutte le griglie diventano una colonna */
-  .citazioni-novita-grid,
-  .chi-grid,
-  .contatti-inner,
-  .spotify-hero-inner {
-    grid-template-columns: 1fr !important;
-    text-align: center !important;
-  }
-
-  /* Centra contenuti principali */
-  section, .container, .content {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    text-align: center !important;
-  }
-
-  /* Galleria sotto merch in colonna */
-  .gallery-row {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1.2rem !important;
-  }
-
-  .gallery-row img {
-    width: 85% !important;
-  }
-
-  /* Fix immagini varie */
-  img, video {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Fix slider citazioni */
-  .quote-btn {
-    top: 90% !important;
-  }
-
-  .quote-btn img {
-    width: 26px !important;
-  }
-
-  .quote-text {
-    padding-bottom: 42px !important;
-  }
-}
-
-</style>
+    /* RESPONSIVE */
+    @media (max-width: 880px) {
+      .hero-content, .follow-card, .citazioni-novita-grid, .chi-grid, .contatti-inner { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 1fr; }
+      .hero-logo-wrap { margin: 2rem auto 0; }
+    }
+    @media (max-width: 720px) {
+      .photos-row, .gallery-row, .merch-grid, .tracks-grid { grid-template-columns: 1fr; }
+      .gallery-row { flex-direction: column; align-items: center; }
+      .gallery-row img { width: 90%; }
+    }
+    @media (max-width: 600px) {
+      .nav, .nav-left, .nav-links { flex-direction: column; justify-content: center; text-align: center; }
+      .nav-links { flex-wrap: wrap; gap: 0.8rem; }
+      .quote-btn { top: 90% !important; }
+      .quote-text { padding-bottom: 40px !important; }
+      section { padding-inline: 1rem; text-align: center; }
+      .hero-actions { justify-content: center; }
+    }
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <nav class="nav">
       <div class="nav-left">
@@ -1286,7 +640,6 @@
   </header>
 
   <main>
-    <!-- HOME -->
     <section id="home">
       <div class="container hero-content">
         <div>
@@ -1300,7 +653,14 @@
             <a class="btn" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw?si=ok8DL5rzQLyvZBXLrbqiLA" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-spotify" style="margin-right: 0.4rem;"></i> Ascolta Ora
             </a>
-            <a class="btn btn-outline" href="#album">Scopri Album &amp; Singoli</a>
+            <a class="btn btn-outline" href="#album">Scopri Album & Singoli</a>
+          </div>
+
+          <div class="hero-video-wrapper">
+             <h3 class="hero-video-label">VIDEOCLIP - LONTANO DALLA GENTE</h3>
+             <div class="video-frame">
+                <div id="videoContainer"></div>
+             </div>
           </div>
         </div>
 
@@ -1312,7 +672,6 @@
       </div>
     </section>
 
-    <!-- FOTO + SEGUITECI -->
     <section id="social">
       <div class="container">
         <div class="photos-row">
@@ -1330,24 +689,20 @@
             </p>
           </div>
           <div class="follow-links">
-            
-<div class="social-icons">
-  <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank"><img src="assets/images/tiktok.png"></a>
-  <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank"><img src="assets/images/spotify.png"></a>
-  <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank"><img src="assets/images/instagram.png"></a>
-  <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank"><img src="assets/images/youtube.png"></a>
-  <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX" target="_blank"><img src="assets/images/amazon.png"></a>
-</div>
-
+            <div class="social-icons">
+              <a class="social-icon" href="https://www.tiktok.com/@abp___official?_r=1&_t=ZN-91ZHJBT191C" target="_blank"><img src="assets/images/tiktok.png"></a>
+              <a class="social-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank"><img src="assets/images/spotify.png"></a>
+              <a class="social-icon" href="https://www.instagram.com/abp___official/" target="_blank"><img src="assets/images/instagram.png"></a>
+              <a class="social-icon" href="https://www.youtube.com/@abp___official" target="_blank"><img src="assets/images/youtube.png"></a>
+              <a class="social-icon" href="https://music.amazon.it/artists/B0B11HLHXX" target="_blank"><img src="assets/images/amazon.png"></a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CITAZIONI + NOVITÀ -->
     <section id="citazioni-novita">
       <div class="container citazioni-novita-grid">
-        <!-- Citazioni -->
         <div>
           <div class="quote-slider">
             <div class="quote-icon">
@@ -1364,30 +719,24 @@
           </div>
         </div>
 
-        <!-- Novità -->
-        
-<div class="novita-section">
-  <h2>Novità</h2>
-  <p>
-    Ultime uscite, interviste e novità dal mondo Abbuopillonzi.
-  </p>
-  <div id="newsList" class="news-list"></div>
-</div>
+        <div class="novita-section">
+          <h2>Novità</h2>
+          <p>
+            Ultime uscite, interviste e novità dal mondo Abbuopillonzi.
+          </p>
+          <div id="newsList" class="news-list"></div>
+        </div>
       </div>
     </section>
 
-    <!-- HERO SPOTIFY A SCHERMO INTERO -->
     <section id="spotify-hero">
       <div class="spotify-hero-inner">
         <div class="spotify-hero-bg">
           <div class="spotify-hero-tag">Ascoltaci ora.</div>
           <h2 class="spotify-hero-title">Abbuopillonzi</h2>
-
           <a class="spotify-btn spotify-hero-icon" href="https://open.spotify.com/intl-it/artist/6oHfv1AlEtpDEMDddpVYgw" target="_blank">
-    <img src="assets/images/spotifybar.png" alt="Spotify ABP">
-</a>
-
-
+            <img src="assets/images/spotifybar.png" alt="Spotify ABP">
+          </a>
           <p class="spotify-hero-note">
             Un click e sei nel nostro mondo su Spotify.
           </p>
@@ -1395,7 +744,6 @@
       </div>
     </section>
 
-    <!-- MERCH + GALLERIA -->
     <section id="merch">
       <div class="container">
         <h2 class="section-title">Merch ABP</h2>
@@ -1408,7 +756,6 @@
           <button class="merch-arrow merch-next"><img src="assets/images/frecciadx.png" alt="Successivo"></button>
         </div>
 
-        <!-- Galleria sotto il merch -->
         <div class="gallery-row">
           <img src="assets/images/foto10.webp" alt="Abbuopillonzi live 1">
           <img src="assets/images/foto11.webp" alt="Abbuopillonzi live 2">
@@ -1417,22 +764,13 @@
       </div>
     </section>
 
-    <!-- BRANI PRINCIPALI + VIDEO -->
     <section id="album">
       <div class="container">
         <h2 class="section-title">I nostri brani</h2>
-
         <div id="tracksGrid" class="tracks-grid"></div>
-<div class="video-wrapper">
-          <h3>Guarda l'ultimo video</h3>
-          <div class="video-frame">
-            <div id="videoContainer"></div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- CHI SIAMO -->
     <section id="chi">
       <div class="container chi-grid">
         <div>
@@ -1460,7 +798,6 @@
       </div>
     </section>
 
-    <!-- CONTATTI / FORM -->
     <section id="contatti">
       <div class="contatti-inner">
         <div class="contatti-text">
@@ -1479,7 +816,6 @@
 
         <div class="contact-form-card">
           <h3>Scrivici Qui</h3>
-          <!-- mailto: semplice per GitHub Pages; puoi sostituire con un servizio esterno tipo Formspree -->
           <form action="mailto:abbuopillonzi@gmail.com" method="POST" enctype="text/plain">
             <div class="form-grid">
               <div class="form-field">
@@ -1508,18 +844,13 @@
 
   <footer>
     <div>© <span id="year"></span> Abbuopillonzi – Tutti i diritti sono nostri, non provateci nemmeno.</div>
-
   </footer>
 
-  <!-- SCRIPT QUOTE SLIDER & ANNO FOOTER -->
-  
-
-
-
-
-
-<!-- SCRIPTS JSON DINAMICI -->
 <script>
+// IMPOSTA ANNO CORRENTE
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// 1. CARICAMENTO BRANI
 async function caricaBrani() {
   const grid = document.getElementById('tracksGrid');
   if (!grid) return;
@@ -1542,8 +873,17 @@ async function caricaBrani() {
   } catch (e) { console.error('Errore caricamento brani', e); }
 }
 
-let frasiData = [];
+// 2. GESTIONE CITAZIONI (FIXATO: DATI INSERITI DIRETTAMENTE QUI)
+// Modifica qui sotto le tue citazioni se necessario
+let frasiData = [
+  { "testo": "La musica è l'unico modo che conosciamo per dire cose che altrimenti non avrebbero senso.", "titolo": "ABP" },
+  { "testo": "Non importa dove andiamo, l'importante è che ci sia un palco e qualcuno pronto ad ascoltare.", "titolo": "Francesco" },
+  { "testo": "Ogni nota è un pezzo di noi che lasciamo andare per sempre.", "titolo": "ABP" },
+  { "testo": "Firenze ci ha cresciuti, la musica ci ha salvati.", "titolo": "Lorenzo" }
+];
+
 let fraseIndex = 0;
+
 function aggiornaFrase() {
   const textEl = document.getElementById('quoteText');
   const authorEl = document.getElementById('quoteAuthor');
@@ -1554,19 +894,18 @@ function aggiornaFrase() {
   authorEl.textContent = f.titolo ? ('- ' + f.titolo) : '';
   indEl.textContent = (fraseIndex + 1) + ' / ' + frasiData.length;
 }
-async function caricaFrasi() {
-  try {
-    const res = await fetch('assets/data/frasi.json');
-    frasiData = await res.json();
+
+// Funzione modificata: non carica più JSON esterno per evitare errori
+function caricaFrasi() {
     fraseIndex = 0;
     aggiornaFrase();
     const prev = document.getElementById('quotePrev');
     const next = document.getElementById('quoteNext');
     if (prev) prev.onclick = () => { if (frasiData.length) { fraseIndex = (fraseIndex - 1 + frasiData.length) % frasiData.length; aggiornaFrase(); } };
     if (next) next.onclick = () => { if (frasiData.length) { fraseIndex = (fraseIndex + 1) % frasiData.length; aggiornaFrase(); } };
-  } catch (e) { console.error('Errore caricamento frasi', e); }
 }
 
+// 3. CARICAMENTO NOVITA
 async function caricaNovita() {
   const list = document.getElementById('newsList');
   if (!list) return;
@@ -1591,19 +930,18 @@ async function caricaNovita() {
   } catch (e) { console.error('Errore caricamento novità', e); }
 }
 
-async function caricaVideo() {
+// 4. CARICAMENTO VIDEO (FIXATO: ID SPECIFICO)
+function caricaVideo() {
   const container = document.getElementById('videoContainer');
   if (!container) return;
-  try {
-    const res = await fetch('assets/data/video.json');
-    const data = await res.json();
-    const url = data.youtube || '';
-    const match = url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]+)/);
-    const id = match ? match[1] : '73rDhDsiiLo';
-    container.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="ABP - Ultimo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-  } catch (e) { console.error('Errore caricamento video', e); }
+  
+  // ID del video Youtube richiesto
+  const id = 'kAtk_h2f_fY';
+  
+  container.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="ABP - Ultimo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
 }
 
+// 5. GESTIONE MERCH
 let merchData = [];
 let merchIndex = 0;
 let merchPerView = 3;
@@ -1671,9 +1009,10 @@ async function caricaMerch() {
   } catch (e) { console.error('Errore caricamento merch', e); }
 }
 
+// INIZIALIZZAZIONE
 function initABP() {
   caricaBrani();
-  caricaFrasi();
+  caricaFrasi(); // Usa i dati interni ora
   caricaNovita();
   caricaVideo();
   caricaMerch();
