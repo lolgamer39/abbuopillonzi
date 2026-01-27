@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17872550492"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17872550492'); // 
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -20,7 +28,6 @@
   <meta http-equiv="Expires" content="0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-olVvZQvXrWIw6QY7n1fWgkldS3r3pW8qgWg7PZ2hMSI7X4DYTpaRzdX4xv1xS/Z5rW2W6IwF0xTv4mVvQxYdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -33,6 +40,7 @@
       --accent: #33d17a;
       --text-main: #f4f7fb;
       --text-muted: #a7b8c3;
+      --header-height: 70px;
     }
 
     * {
@@ -50,6 +58,12 @@
       background-color: var(--bg-dark);
       color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden; /* Previene scroll orizzontale */
+    }
+    
+    /* Blocca lo scroll quando il loader è attivo o il menu è aperto */
+    body.no-scroll {
+      overflow: hidden;
     }
 
     a {
@@ -62,6 +76,77 @@
       display: block;
     }
 
+    /* --- LOADER SCREEN --- */
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-darker);
+      z-index: 99999; /* Sopra a tutto */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader-content {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Logo centrale nel loader */
+    .loader-logo-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Anello di caricamento SVG */
+    .loader-ring-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg); /* Inizia dall'alto */
+      z-index: 1;
+    }
+
+    .loader-circle-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 8;
+    }
+
+    .loader-circle-fill {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 8;
+      stroke-linecap: round;
+      /* Circonferenza approx per raggio 54 (cx 60, cy 60, r 54) -> 2 * pi * 54 ≈ 339.3 */
+      stroke-dasharray: 340; 
+      stroke-dashoffset: 340; /* Inizia vuoto */
+      animation: fillRing 2s ease-in-out infinite;
+    }
+
+    @keyframes fillRing {
+      0% { stroke-dashoffset: 340; }
+      50% { stroke-dashoffset: 0; } /* Pieno */
+      100% { stroke-dashoffset: -340; } /* Si svuota */
+    }
+
     /* HEADER / NAVBAR */
     header {
       position: fixed;
@@ -71,12 +156,14 @@
       z-index: 1000;
       background: var(--purple);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      height: var(--header-height);
     }
 
     .nav {
       max-width: 1100px;
+      height: 100%;
       margin: 0 auto;
-      padding: 0.75rem 1.5rem;
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -86,6 +173,7 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
+      z-index: 1002; /* Sopra il menu mobile */
     }
 
     .nav-logo {
@@ -110,6 +198,7 @@
       letter-spacing: 0.03em;
     }
 
+    /* Menu Desktop */
     .nav-links {
       display: flex;
       gap: 1.5rem;
@@ -136,9 +225,25 @@
       width: 100%;
     }
 
+    /* Hamburger Menu Button (Nascosto su desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1002;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      transition: all 0.3s ease;
+    }
+
     /* UTILITIES */
     main {
-      margin-top: 70px;
+      margin-top: var(--header-height);
     }
 
     section {
@@ -232,7 +337,6 @@
       align-items: center;
     }
 
-    /* NUOVO STILE PER IL VIDEO IN HERO */
     .hero-video-wrapper {
         margin-top: 2.5rem;
         width: 100%;
@@ -269,13 +373,13 @@
       border-radius: 50%;
     }
 
-    /* VIDEO GENERICO */
     .video-frame {
       position: relative;
       padding-top: 56.25%;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+      background: #000;
     }
 
     .video-frame iframe {
@@ -598,20 +702,56 @@
     /* FOOTER */
     footer { background: var(--bg-darker); padding: 1.5rem; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
 
-    /* RESPONSIVE */
+    /* --- RESPONSIVE OPTIMIZATION --- */
     @media (max-width: 880px) {
       .hero-content, .follow-card, .citazioni-novita-grid, .chi-grid, .contatti-inner { grid-template-columns: 1fr; }
       .news-item { grid-template-columns: 1fr; }
       .hero-logo-wrap { margin: 2rem auto 0; }
     }
+    
     @media (max-width: 720px) {
       .photos-row, .gallery-row, .merch-grid, .tracks-grid { grid-template-columns: 1fr; }
       .gallery-row { flex-direction: column; align-items: center; }
       .gallery-row img { width: 90%; }
     }
-    @media (max-width: 600px) {
-      .nav, .nav-left, .nav-links { flex-direction: column; justify-content: center; text-align: center; }
-      .nav-links { flex-wrap: wrap; gap: 0.8rem; }
+    
+    /* GESTIONE MENU MOBILE OTTIMIZZATA */
+    @media (max-width: 650px) {
+      .hamburger {
+        display: flex; /* Mostra icona hamburger */
+      }
+
+      .nav-links {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--purple);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        transform: translateY(-150%); /* Nascondi in alto */
+        transition: transform 0.4s ease-in-out;
+        z-index: 1001;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      }
+
+      .nav-links.active {
+        transform: translateY(0); /* Mostra */
+      }
+      
+      /* Animazione hamburger */
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+      }
+
       .quote-btn { top: 90% !important; }
       .quote-text { padding-bottom: 40px !important; }
       section { padding-inline: 1rem; text-align: center; }
@@ -619,7 +759,16 @@
     }
   </style>
 </head>
-<body>
+<body class="no-scroll"> <div id="loader-wrapper">
+    <div class="loader-content">
+      <img src="assets/images/logo.png" alt="Caricamento..." class="loader-logo-img">
+      <svg class="loader-ring-svg" width="120" height="120" viewBox="0 0 120 120">
+        <circle class="loader-circle-bg" cx="60" cy="60" r="54"></circle>
+        <circle class="loader-circle-fill" cx="60" cy="60" r="54"></circle>
+      </svg>
+    </div>
+  </div>
+
   <header>
     <nav class="nav">
       <div class="nav-left">
@@ -628,13 +777,20 @@
         </div>
         <div class="nav-title">ABP</div>
       </div>
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#chi">Chi Siamo</a>
-        <a href="#social">Social</a>
-        <a href="#album">Album</a>
-        <a href="#merch">Merch</a>
-        <a href="#contatti">Contatti</a>
+      
+      <div class="hamburger" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link-item">Home</a>
+        <a href="#chi" class="nav-link-item">Chi Siamo</a>
+        <a href="#social" class="nav-link-item">Social</a>
+        <a href="#album" class="nav-link-item">Album</a>
+        <a href="#merch" class="nav-link-item">Merch</a>
+        <a href="#contatti" class="nav-link-item">Contatti</a>
       </div>
     </nav>
   </header>
@@ -850,6 +1006,26 @@
 // IMPOSTA ANNO CORRENTE
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// --- GESTIONE MENU MOBILE ---
+const hamburger = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+const navItems = document.querySelectorAll('.nav-link-item');
+
+if(hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Chiudi il menu quando si clicca su un link
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+}
+
 // 1. CARICAMENTO BRANI
 async function caricaBrani() {
   const grid = document.getElementById('tracksGrid');
@@ -873,7 +1049,7 @@ async function caricaBrani() {
   } catch (e) { console.error('Errore caricamento brani', e); }
 }
 
-// 2. GESTIONE CITAZIONI (JSON ESTERNO RIPRISTINATO)
+// 2. GESTIONE CITAZIONI
 let frasiData = [];
 let fraseIndex = 0;
 
@@ -888,7 +1064,6 @@ function aggiornaFrase() {
   indEl.textContent = (fraseIndex + 1) + ' / ' + frasiData.length;
 }
 
-// Ripristinata la chiamata fetch al file esterno
 async function caricaFrasi() {
   try {
     const res = await fetch('assets/data/frasi.json');
@@ -927,14 +1102,11 @@ async function caricaNovita() {
   } catch (e) { console.error('Errore caricamento novità', e); }
 }
 
-// 4. CARICAMENTO VIDEO (ID SPECIFICO)
+// 4. CARICAMENTO VIDEO
 function caricaVideo() {
   const container = document.getElementById('videoContainer');
   if (!container) return;
-  
-  // ID del video Youtube richiesto
   const id = 'kAtk_h2f_fY';
-  
   container.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" title="ABP - Ultimo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
 }
 
@@ -1006,19 +1178,39 @@ async function caricaMerch() {
   } catch (e) { console.error('Errore caricamento merch', e); }
 }
 
-// INIZIALIZZAZIONE
-function initABP() {
-  caricaBrani();
-  caricaFrasi(); 
-  caricaNovita();
+// --- INITIALIZATION & LOADER REMOVAL ---
+async function initABP() {
+  // Esegue tutte le chiamate async in parallelo
+  await Promise.allSettled([
+    caricaBrani(),
+    caricaFrasi(), 
+    caricaNovita(),
+    caricaMerch()
+  ]);
+  
+  // Funzioni sincrone
   caricaVideo();
-  caricaMerch();
+  
+  // Nascondi Loader
+  const loader = document.getElementById('loader-wrapper');
+  if (loader) {
+    // Opzionale: piccolo ritardo per godersi l'animazione se il caricamento è troppo veloce
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      document.body.classList.remove('no-scroll');
+      
+      // Rimuovi completamente dal DOM dopo la transizione
+      setTimeout(() => {
+        loader.remove();
+      }, 500);
+    }, 800);
+  }
 }
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initABP);
-} else {
-  initABP();
-}
+
+// Aspetta che il DOM e le risorse principali (immagini, css) siano caricate
+window.addEventListener('load', initABP);
+
 </script>
 </body>
 </html>
