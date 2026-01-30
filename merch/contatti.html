@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contatti — ABP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #03151f;
+      --bg-card: #061c28;
+      --purple: #a373bd;
+      --purple-dark: #5b1a6b;
+      --accent: #33d17a;
+      --text-main: #f4f7fb;
+      --text-muted: #a7b8c3;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h2 { color: var(--purple); margin-bottom: 0.5rem; }
+    p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+    .product-highlight {
+      background: rgba(163, 115, 189, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      border-left: 4px solid var(--purple);
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    label { display: block; text-align: left; font-size: 0.8rem; margin-bottom: 5px; color: var(--purple); }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #1a3a4a;
+      background: #03151f;
+      color: white;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--purple);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--purple-dark);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: var(--purple);
+      transform: translateY(-2px);
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    .back-link:hover { color: white; }
+  </style>
+</head>
+<body>
+
+<div class="contact-card">
+  <h2>Invia una richiesta</h2>
+  <p>Compila il modulo per chiedere info su prezzo e disponibilità.</p>
+
+  <form action="https://formspree.io/f/TUO_ID_FORMSPREE" method="POST">
+    
+    <div class="product-highlight">
+      <label>Prodotto d'interesse:</label>
+      <strong id="product-display">Caricamento...</strong>
+      <input type="hidden" name="prodotto" id="product-hidden">
+    </div>
+
+    <label>Il tuo nome</label>
+    <input type="text" name="nome" placeholder="Esempio: Mario Rossi" required>
+
+    <label>La tua Email</label>
+    <input type="email" name="email" placeholder="esempio@email.it" required>
+
+    <label>Messaggio (opzionale)</label>
+    <textarea name="messaggio" rows="4" placeholder="Vorrei sapere se è disponibile la taglia M..."></textarea>
+
+    <button type="submit" class="btn-submit">Invia Richiesta</button>
+  </form>
+
+  <a href="javascript:history.back()" class="back-link">← Torna al merch</a>
+</div>
+
+<script>
+  // Legge il nome del prodotto dall'URL (es: ?prodotto=T-shirt%20ABP)
+  const params = new URLSearchParams(window.location.search);
+  const nomeProdotto = params.get('prodotto');
+
+  if (nomeProdotto) {
+    document.getElementById('product-display').textContent = nomeProdotto;
+    document.getElementById('product-hidden').value = nomeProdotto;
+  } else {
+    document.getElementById('product-display').textContent = "Prodotto generico";
+  }
+</script>
+
+</body>
+</html>
