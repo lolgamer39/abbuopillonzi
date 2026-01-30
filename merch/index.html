@@ -314,8 +314,6 @@ async function caricaMerch() {
     grid.innerHTML = '';
 
     merch.forEach(item => {
-      // Nota: il percorso immagine nel JSON si presume sia relativo alla root,
-      // quindi aggiungiamo "../" se questa pagina è in una sottocartella.
       grid.innerHTML += `
         <div class="merch-card">
           <img src="../${item.immagine}" alt="${item.nome}">
@@ -323,7 +321,7 @@ async function caricaMerch() {
             <div class="merch-name">${item.nome}</div>
             <div class="merch-price">${item.prezzo}</div>
             <div class="merch-desc">${item.descrizione}</div>
-            <a class="btn" href="${item.link}" target="_blank">Acquista Ora</a>
+            <a class="btn" href="contatti.html?prodotto=${encodeURIComponent(item.nome)}">Richiedi Disponibilità</a>
           </div>
         </div>`;
     });
