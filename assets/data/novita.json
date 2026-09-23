@@ -1,18 +1,24 @@
 [
   {
+    "titolo": "Live al Flock Fest 2026",
+    "sottotitolo": "Il 4 ottobre saremo sul palco del Flock Fest al Teatro Cartiere Carrara! Condivideremo il palco con artisti come Giancane, Turin Brakes e Bull Brigade. Vi aspettiamo dalle 17:00 per fare festa insieme tra musica e birra!",
+    "data": "04/10/2026",
+    "immagine": "assets/images/flockfest.jpg",
+    "link": "https://www.teatrocartierecarrara.it/eventi/flockfest/"
+  },
+  {
+    "titolo": "Vittoria al Contest Liberi Tutti Festival",
+    "sottotitolo": "Abbiamo vinto il contest del Liberi Tutti Festival a Sesto Fiorentino! Un'emozione incredibile aver aperto il palco per artisti storici come i 99 Posse. Grazie a tutti per il supporto in piazza!",
+    "data": "01/09/2026",
+    "immagine": "assets/images/liberitutti.jpg",
+    "link": "https://www.reportpistoia.com/una-piazza-che-prende-voce-i-99-posse-al-festival-liberi-tutti/"
+  },
+  {
     "titolo": "Uscita videoclip \"Lontano Dalla Gente\"",
-    "sottotitolo": "Esce finalmente il videoclip del singolo: \"Lontano Dalla Gente\". L'immagine di un uomo che cerca di fuggire dalla sua realtà attraverso la musica, stanco della solita noiosa quotidianità. Correte a vederlo!"
-  ,
+    "sottotitolo": "Esce finalmente il videoclip del singolo: \"Lontano Dalla Gente\". L'immagine di un uomo che cerca di fuggire dalla sua realtà attraverso la musica, stanco della solita noiosa quotidianità. Correte a vederlo!",
     "data": "26/01/2026",
     "immagine": "assets/images/videoclip.jpg",
     "link": "https://youtu.be/kAtk_h2f_fY"
-  },
-  {
-    "titolo": "Uscita album \"VIPS\"",
-    "sottotitolo": "Esce finalmente il nostro primo album: VIPS (Vivo In Pessimo Stato). Con 8 tracce è il perfetto mix tra pezzi esotici, storie divertenti e musiche ballabili. Correte ad ascoltarlo!",
-    "data": "24/03/2024",
-    "immagine": "assets/images/vips.jpg",
-    "link": "https://open.spotify.com/intl-it/album/6slRf45zXBVwspBf3XR3EP?si=dS-oU81CT1aTKwOsi67cTQ"
   },
   {
     "titolo": "Intervista per Radio Giglio Rosso",
@@ -26,6 +32,13 @@
     "sottotitolo": "Sono disponibili i nostri singoli \"Maracuja\" e \"Lontano Dalla Gente\". Ascoltateli ora su tutte le piattaforme!",
     "data": "24/03/2025",
     "immagine": "assets/images/maracuja.jpg",
-    "link": "https://open.spotify.com/intl-it/album/3MTilXpEj1PNWkzKrx8kpE?si=0oOiK1orQZOLJhngpveDew"
+    "link": "https://www.abbuopillonzi.com/"
+  },
+  {
+    "titolo": "Uscita album \"VIPS\"",
+    "sottotitolo": "Esce finalmente il nostro primo album: VIPS (Vivo In Pessimo Stato). Con 8 tracce è il perfetto mix tra pezzi esotici, storie divertenti e musiche ballabili. Correte ad ascoltarlo!",
+    "data": "24/03/2024",
+    "immagine": "assets/images/vips.jpg",
+    "link": "https://open.spotify.com/intl-it/album/6slRf45zXBVwspBf3XR3EP?si=dS-oU81CT1aTKwOsi67cTQ"
   }
 ]
