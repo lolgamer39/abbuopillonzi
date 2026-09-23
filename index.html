@@ -383,43 +383,101 @@
       border-radius: 50%;
     }
 
-    /* FLOCK FEST - AGGIUNTO PRIMA DEL VIDEO */
+    /* FLOCK FEST - BANNER PROMO PRIMA DEL VIDEO */
     .flockfest-promo {
       width: 100%;
-      max-width: 1100px;
-      margin: 2.5rem auto 1rem auto;
+      max-width: 1200px;
+      margin: 2.6rem auto 1.2rem auto;
       padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
     }
 
     .flockfest-poster-wrap {
-      width: min(390px, 44vw);
-      border-radius: 18px;
+      position: relative;
+      width: 100%;
       overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.62);
-      flex: 0 0 auto;
+      border-radius: 24px;
+      background: #f97316;
+      box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+      isolation: isolate;
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1),
+                  box-shadow 0.35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .flockfest-poster-wrap:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 30px 68px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
     }
 
     .flockfest-poster {
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    .flockfest-ticket-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: inherit;
     }
 
     .flockfest-ticket-btn {
-      min-width: 210px;
-      padding: 0.95rem 1.8rem;
-      font-size: 1rem;
+      position: absolute;
+      left: 24%;
+      top: 52%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: clamp(0.78rem, 1.35vw, 1rem) clamp(1.2rem, 2.5vw, 2.1rem);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 999px;
+      background: linear-gradient(135deg, #663399 0%, #4f245f 100%);
+      color: #fff;
+      font-family: inherit;
+      font-size: clamp(0.72rem, 1.45vw, 1.05rem);
+      font-weight: 700;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
       white-space: nowrap;
+      cursor: pointer;
+      box-shadow:
+        0 14px 32px rgba(44, 11, 55, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      transition:
+        transform 0.28s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.28s ease,
+        filter 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .flockfest-ticket-btn::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      pointer-events: none;
+    }
+
+    .flockfest-ticket-btn:hover {
+      transform: translate(-50%, -50%) scale(1.055);
+      background: linear-gradient(135deg, #7441a7 0%, #5a2a69 100%);
+      box-shadow:
+        0 18px 38px rgba(44, 11, 55, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      filter: brightness(1.05);
+    }
+
+    .flockfest-ticket-btn:active {
+      transform: translate(-50%, -50%) scale(0.985);
+    }
+
+    .flockfest-ticket-btn:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, 0.92);
+      outline-offset: 4px;
     }
 
     /* FULL WIDTH VIDEO SECTION */
@@ -807,18 +865,19 @@
     
     @media (max-width: 720px) {
       .flockfest-promo {
-        flex-direction: column;
-        gap: 1.4rem;
         margin-top: 2rem;
+        padding-inline: 1rem;
       }
 
       .flockfest-poster-wrap {
-        width: min(100%, 420px);
+        border-radius: 18px;
       }
 
       .flockfest-ticket-btn {
-        min-width: 0;
-        width: min(100%, 320px);
+        left: 23%;
+        top: 52%;
+        min-height: 38px;
+        letter-spacing: 0.035em;
       }
 
       .photos-row, .gallery-row, .merch-grid, .tracks-grid { grid-template-columns: 1fr; }
@@ -931,11 +990,9 @@
       
       <div class="flockfest-promo">
         <div class="flockfest-poster-wrap">
-          <img class="flockfest-poster" src="assets/images/flockfest.png" alt="Locandina Flock Fest - 4 ottobre">
-        </div>
-        <div class="flockfest-ticket-wrap">
-          <button type="button" class="btn flockfest-ticket-btn" aria-label="Acquista i biglietti per il Flock Fest">
-            Acquista i biglietti
+          <img class="flockfest-poster" src="assets/images/flockfest.jpg" alt="Flock Fest - 4 ottobre">
+          <button type="button" class="flockfest-ticket-btn" aria-label="Acquista i biglietti per il Flock Fest">
+            ACQUISTA BIGLIETTI
           </button>
         </div>
       </div>
