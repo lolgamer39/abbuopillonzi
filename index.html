@@ -383,6 +383,45 @@
       border-radius: 50%;
     }
 
+    /* FLOCK FEST - AGGIUNTO PRIMA DEL VIDEO */
+    .flockfest-promo {
+      width: 100%;
+      max-width: 1100px;
+      margin: 2.5rem auto 1rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .flockfest-poster-wrap {
+      width: min(390px, 44vw);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.62);
+      flex: 0 0 auto;
+    }
+
+    .flockfest-poster {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .flockfest-ticket-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flockfest-ticket-btn {
+      min-width: 210px;
+      padding: 0.95rem 1.8rem;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
     /* FULL WIDTH VIDEO SECTION */
     .full-width-video-section {
         width: 100%;
@@ -767,6 +806,21 @@
     }
     
     @media (max-width: 720px) {
+      .flockfest-promo {
+        flex-direction: column;
+        gap: 1.4rem;
+        margin-top: 2rem;
+      }
+
+      .flockfest-poster-wrap {
+        width: min(100%, 420px);
+      }
+
+      .flockfest-ticket-btn {
+        min-width: 0;
+        width: min(100%, 320px);
+      }
+
       .photos-row, .gallery-row, .merch-grid, .tracks-grid { grid-template-columns: 1fr; }
       .gallery-row { flex-direction: column; align-items: center; }
       .gallery-row img { width: 90%; }
@@ -872,6 +926,17 @@
           <div class="hero-logo">
             <img src="assets/images/logo.png" alt="Logo ABP">
           </div>
+        </div>
+      </div>
+      
+      <div class="flockfest-promo">
+        <div class="flockfest-poster-wrap">
+          <img class="flockfest-poster" src="assets/images/flockfest.png" alt="Locandina Flock Fest - 4 ottobre">
+        </div>
+        <div class="flockfest-ticket-wrap">
+          <button type="button" class="btn flockfest-ticket-btn" aria-label="Acquista i biglietti per il Flock Fest">
+            Acquista i biglietti
+          </button>
         </div>
       </div>
       
