@@ -803,8 +803,27 @@
     #chi { background: var(--bg-darker); }
     .chi-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr); gap: 3rem; align-items: center; }
     .chi-text p { color: var(--text-muted); font-size: 0.95rem; }
-    .chi-photo-wrap { max-width: 360px; justify-self: center; }
-    .chi-photo-circle { aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 5px solid rgba(255, 255, 255, 0.06); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7); }
+    .chi-photo-wrap {
+      width: 100%;
+      max-width: 520px;
+      justify-self: center;
+    }
+
+    .chi-photo-circle {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      background: var(--bg-card);
+    }
+
+    .chi-photo-circle img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
 
     /* CONTATTI - STILE AGGIORNATO COME RICHIESTO */
     #contatti { background: var(--purple); color: #0d0611; }
@@ -1381,4 +1400,3 @@ window.addEventListener('load', initABP);
 </script>
 </body>
 </html>
-
